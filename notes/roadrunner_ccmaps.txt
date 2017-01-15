@@ -1,0 +1,119 @@
+#TODO: See if the old Dell machine still has the correct surface mappings for the following songs:
+
+-- because I can't seem to get them to work at present!!
+
+CC: 20	   0/0 16383	DETUNE
+CC: 21	   0/1 16383	PW
+CC: 22	   0/2 16383	PWM
+CC: 23	   0/3 16383	Bass1
+CC: 24	   0/4 16383	Bass2	
+CC: 25	   0/5 16383	Middle1
+CC: 26	   0/6 8191
+CC: 27	   0/7 16383	Treble1
+CC: 28	   0/8 16383	-
+CC: 29	   0/9 16383	Decay	***
+CC: 30	   0/10 16383	Release ***
+CC: 31	   0/11 16383	-
+CC: 32	   0/12 16383	TREMOLO
+CC: 33	   0/13 16383	REVERB WET
+CC: 34	   0/14 16383	CHOROUS (Left control)
+CC: 35	   0/15 16383	CHOROUS	(M contol)
+CC: 36	   0/16 16383	CHOROUS (R control)
+CC: 37	   0/17 16383	CHOROUS WET
+CC: 37	   0/18 16383	REVERB (Left control)
+CC: 39	   0/19 16383	REVERB (Middle control)
+CC: 40	   0/20 16383	REVERB (R conrol)
+CC: 41	   0/21 16383	LFO SWITCH
+
+
+#BOTTOM ROW CONTROLS
+CC: 50	   4/0 16383	TUNE
+CC: 51	   4/1 16383	LFO
+CC: 52	   4/2 16383	VIBRATO
+CC: 53	   4/3 16383	VOLUME
+
+
+
+#MEMORY BANKS
+
+CC: 99	   3/0 16383	BASS
+CC: 100	   3/1 16383	TREBLE
+CC: 101	   3/2 16383	MEM 1 (BLACK)
+CC: 102	   3/4 16383	MEM 2 ()
+CC: 103	   3/5 16383	MEM 3 ()
+CC: 104	   3/6 16383	MEM 4 ()
+CC: 105	   3/7 16383	MEM 5 ()
+CC: 106	   3/8 16383	MEM 6 ()
+
+
+CC: 110	   3/10 16384	MIDI DOWN
+CC: 111	   3/11 16384	MIDI UP
+#CC: 112	   3/12 16384	PANEL SWITCH (DO NOT USE!!!)
+CC: 113   3/13 16384	ORANGE MIDI BUTTON (SAVE?)
+
+
+CLI: set history 50
+CLI: set line 80
+CLI: set accel 0.050000
+CLI: set prompttext "%algo% (m %memory% ch %channel%): "
+CLI: set cli cycle 500
+CLI: set panel 0
+CLI: set cli h left
+CLI: set cli l right
+CLI: set cli ^k incmin
+CLI: set cli k inc
+CLI: set cli K incmax
+CLI: set cli ^j decmin
+CLI: set cli j dec
+CLI: set cli J decmax
+CLI: set cli M memUp
+CLI: set cli m memDown
+CLI: set cli r read
+CLI: set cli w write
+CLI: set cli x toggle
+CLI: set cli u fineup
+CLI: set cli d finedown
+CLI: set cli f update
+CLI: set cli U up
+CLI: set cli D down
+CLI: set cli : insert
+CLI: set cli / search
+KM: ' 18 1
+KM: , 14 1
+KM: . 16 1
+KM: / 17 1
+KM: 0 39 0
+KM: 2 25 0
+KM: 3 27 0
+KM: 5 30 0
+KM: 6 32 0
+KM: 7 34 0
+KM: 9 37 0
+KM: = 42 0
+KM: [ 41 0
+KM: \ 45 0
+KM: ] 43 0
+KM: a 1 1
+KM: b 9 1
+KM: c 5 1
+KM: e 28 0
+KM: f 6 1
+KM: g 8 1
+KM: h 10 1
+KM: i 36 0
+KM: k 13 1
+KM: l 15 1
+KM: m 12 1
+KM: n 11 1
+KM: o 38 0
+KM: p 40 0
+KM: q 24 0
+KM: r 29 0
+KM: s 3 1
+KM: t 31 0
+KM: u 35 0
+KM: v 7 1
+KM: w 26 0
+KM: x 4 1
+KM: y 33 0
+KM: z 2 1

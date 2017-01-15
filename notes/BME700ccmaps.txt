@@ -1,0 +1,194 @@
+# CURRENT MAPPING:
+
+
+
+CC: 19	   0/12 16547	VCO GLIDE ON/OFF SWITCH (This Works!) <mabye the "buzztide" midi had other channels that mucked about with channle 32 also....
+
+CC: 20	   0/0 16383	MOD1 Tri/Squ switch (127==squ)
+CC: 21	   0/1 16383	MOD1 CYCLE
+CC: 22	   0/2 16383	VCO RATIO
+CC: 23	   0/3 16383	MOD2 Tri/Squ switch (127==squ)
+CC: 24	   0/4 16383	ENVL switch (127=ON)
+CC: 25	   0/5 16383	VIBRA MIX pot
+CC: 26	   0/6 8191	SINGLE/DOUBLE Switch (127==single)
+CC: 27	   0/7 16383	MOD out Tri/Squ switch (127==squ)
+CC: 28	   0/8 16383	VCO GLIDE SPEED
+CC: 29	   0/9 16383	VCO RATIO
+CC: 30	   0/10 16383	VCO VIBR
+CC: 31	   0/11 16383	VCO Shape
+CC: 32	   0/12 16383	VCO Glide switch (only turns to off for all values with 16383)
+CC: 33	   0/13 16383	VCO puldr man/auto - all values change it to "auto"!
+CC: 34	   0/14 16383	VCO pulse env/mod switch - all values change it to "mod"!
+CC: 35	   0/15 16383	VCO tune 8 switch - all values change it to "down"!
+CC: 36	   0/16 16383	VCO Tune 16/4 switch  - all values change it to "4"!
+CC: 37	   0/17 16383	MIXER - White noise / vco output - seems to behave oddly... 
+CC: 38	   0/18 16383	RES FILT sharp/flat. 2==sharp 1==flat - does this work for the others?
+CC: 39	   0/19 16383	RES FILT FREQ 1
+CC: 40	   0/20 16383	*RES FILT FREQ 2
+CC: 41	   0/21 16383	*RES FILT FREQ 4
+CC: 42	   0/22 16383	RES FILT FREQ 8 - all values change it to "0"
+CC: 43	   0/23 16383	RES FILT FREQ 16- all values change it to "0"
+CC: 44	   0/24 16383	ENV1 MODE - all values switch down
+CC: 45	   0/25 16383	?
+CC: 46	   0/26 16383	ENV1 FALL
+CC: 47	   0/27 16383	ENV2 MODE - (127 == "up")
+CC: 48	   0/28 16383	ENV2 RISE
+CC: 49	   0/29 16383	ENV2 FALL
+CC: 50	   0/30 16383	ENV MIX VCF 1 (below env1)
+CC: 51	   0/31 16383	ENV MIX VCF 2 (below env2)
+CC: 52	   0/32 16383
+CC: 53	   0/33 16383	VCF BASIS
+CC: 54	   0/34 16383	VCF ENVELOPE
+CC: 55	   0/35 16383	VCF MOD MIX
+CC: 56	   0/36 16383
+CC: 57	   0/37 16383
+CC: 58	   0/38 16383
+CC: 59	   0/39 16383
+CC: 60	   0/40 16383	VCA MOD MIX
+CC: 61	   0/41 16383
+CC: 62	   0/42 16383
+CC: 63	   0/43 16383
+CC: 64	   0/44 16383
+CC: 65	   0/45 16383
+CC: 66	   0/46 16383
+CC: 67	   0/47 16383
+CC: 68	   0/48 16383
+CC: 69	   0/49 16383
+CC: 101	   2/01 16384
+CC: 102	   2/02 16384
+CC: 103	   2/03 16384
+CC: 104	   2/04 15496
+CC: 105	   2/05 16384
+CC: 106	   2/06 16384
+CC: 107	   2/07 16547
+CC: 108	   2/08 16547
+CC: 109	   2/09 16547
+CC: 110	   2/10 16547
+CC: 111	   2/11 16547
+
+
+#THESE ARE THE "MOD" PANEL MAPPINGS: (NOT SURE WHEN THESE ARE SAVED BY THE SYSTEM - MOST OF THEM DON'T DO MUCH!)
+
+3/0	MOD1 MULTI SWITCH
+3/1	MOD1 SYNC SWITCH
+3/2	MOD1 MULTI SWITCH
+3/3	MOD1 SYNC SWITCH
+
+3/5	VCO DETUNE
+3/6 	VCO MULTI SWITCH
+
+3/9	RES FILT SHARP RESON
+3/10	RES FILT SHARP REMIX
+3/11	RES FILT FLAT RESON
+3/12	RES FILT FLAT REMIX
+
+3/13	ENV1 KBD
+3/14	ENV1 REZERO
+3/15	ENV1 GAIN	
+
+3/16	ENV2 KBD
+3/17	ENV2 REZERO
+3/18	ENV2 GAIN
+
+3/19	VCF KBD
+3/20	VCF REMIX
+
+3/21	NOISE MULTI
+3/7	NOISE PYNC
+3/8	NOISE LEVEL
+
+
+
+
+
+
+
+#BUGS:
+
+I tried hard to find a way to be able to load a preset using midi surfaces, but it doesn't
+seem to be set up properly. 
+SOLVED - you have to "double click" on the surface to load the preset. Simples!
+
+
+
+#MOD1 Tri/Squ switch (127==squ)
+CC: 20 0/00 16383
+
+#MOD1 CYCLE
+CC: 21 0/01 16383
+
+
+#MOD2 Tri/Squ switch (127==squ)
+CC: 23 0/03 16383
+
+#ENV.1 -> vibra mix switch(127== OFF (down))
+CC: 24 0/04 16383
+
+#Vibra mix dial
+CC: 25 0/05 16383
+
+#single/double
+CC: 26 0/06 8191
+
+#single/double tri/squ switch(127==tri)
+CC: 27 0/07 16383
+
+
+CC: 37 0/17: MIXER s/n ratio - all values set to 0 (white noise)!
+CC: 38 0/18: Terminal reports "Midi banksel" DO NOT USE - NOT SURE IF TRACK 38 or 0/18 does it but data loss occurs!
+CC: 39 0/19  ?
+ 
+CC: 40	   0/20 16383	??
+CC: 41	   0/21 16383	??
+CC: 42	   0/22 16383	??
+CC: 43	   0/23 16383	??
+CC: 44	   0/24 16383	??
+CC: 45	   0/25 16383	??
+CC: 46	   0/26 16383	ENV1 Fall
+CC: 47	   0/27 16383	ENV2 Mode
+CC: 49	   0/29 16383	ENV2 Fall
+
+
+#MEMORY:
+# TO USE - simply fire two midi messages of any value (works like a double click)
+CC: 100	   2/00 16384	SAVE!! (DO NOT USE!)
+CC: 101	   2/01 16384
+CC: 102	   2/02 16384
+CC: 103	   2/03 16384
+CC: 104	   2/04 15496
+CC: 105	   2/05 16384
+CC: 106	   2/06 16384
+CC: 107	   2/07 16547
+CC: 108	   2/08 16547
+CC: 109	   2/09 16547
+CC: 110	   2/10 16547
+CC: 111	   2/11 16547
+
+
+
+
+#VCO
+CC: 102	   0/11 16384	VCO Shape
+
+#MIXER
+CC: 102	   0/17 16384 	S/n ratio
+
+#ENV2
+CC: 102	   0/28 16384	ENV2 Rise
+
+#VCF
+CC: 102	   0/32 16384	VCF Reson
+CC: 102	   0/33 15496	VCF Basis
+CC: 102	   0/34 16384	VCF Env
+
+CC: 102	   0/36 16384	VCF tri/sq switch
+CC: 102	   0/36 16384	VCF env1/env2 switch
+
+
+
+
+
+
+
+
+
