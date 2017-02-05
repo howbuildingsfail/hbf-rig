@@ -38,7 +38,7 @@ sleep 2
 
 # THE FOLLOWING LINES ARE FOR BRISTOL VERSION 0.40.8-1 ON DELL INSPIRON 1300 LAPTOP
 #             bme700  midi channel 2                     named BME700, monophonic,memory file 5
-startBristol -bme700 -channel      2 -jack -midi seq -register BME700 -voices 1 -load 5  -gain 1&
+startBristol -bme700 -channel      2 -jack -midi seq -register BME700 -voices 1 -load 5 -mono -lwf -gain 3&
 sleep 4
 
 # connect to jack - for live, we only want to connect to one channel
