@@ -5,7 +5,7 @@
 #yoshimi -a -l zyn.xmz -L zyn.xiz -N yz&
 #sleep 4
 
-yoshimi -a ~/Desktop/Dropbox/sjh/Tightrope/scripts/live141101/gahparams.xmz -L ~/Desktop/Dropbox/sjh/Tightrope/scripts/live141101/gah.xiz -N yg &
+yoshimi -a gahparams.xmz -L gah.xiz -N yg &
 sleep 4
 
 
