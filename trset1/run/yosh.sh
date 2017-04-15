@@ -5,7 +5,9 @@
 #yoshimi -a -l zyn.xmz -L zyn.xiz -N yz&
 #sleep 4
 
-yoshimi -a gahparams.xmz -L gah.xiz -N yg &
+#No need to load the params - and dangerous across architectures!
+#yoshimi -a gahparams.xmz -L gah.xiz -N yg &
+yoshimi -L gah.xiz -N yg &
 sleep 4
 
 
