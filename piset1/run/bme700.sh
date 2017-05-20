@@ -8,7 +8,7 @@
 #cp ~/Desktop/Dropbox/sjh/Tightrope/scripts/bristolmidisurfaces/BME700 ~/.bristol/memory/profiles/BME700	
 
 #LETS ASSUME WE DON'T NEED TO DO THIS AS IT EXISTS
-#cp BME700mem/BME700 ~/.bristol/memory/profiles/BME700	
+#cp BME700mem/BME700 ~/.bristol/memory/BME700
 
 #Remove any existing memory files - that way we'll start with the default
 rm -f ~/.bristol/memory/BME700/BME700*.mem
@@ -24,7 +24,7 @@ do
 	echo "installing memory location $i from presets"
 	cp ../presets/BME700/BME700$i.mem ~/.bristol/memory/BME700/BME700$i.mem 
 done
-cp ../presets/BME700/BME700 ~/.bristol/memory/profiles/BME700
+cp ../presets/BME700/BME700 ~/.bristol/memory/BME700
 #Copy the midi mappings:
 
 sleep 2

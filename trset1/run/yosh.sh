@@ -7,7 +7,7 @@
 
 #No need to load the params - and dangerous across architectures!
 #yoshimi -a gahparams.xmz -L gah.xiz -N yg &
-yoshimi -L gah.xiz -N yg &
+yoshimi -a -L gah.xiz -N yg &
 sleep 4
 
 

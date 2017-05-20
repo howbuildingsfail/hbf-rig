@@ -25,7 +25,7 @@ https://www.raspberrypi.org/blog/a-security-update-for-raspbian-pixel/
 
 new pw for pi is:
 
-hbf2222
+hbf22
 
 ...security should probably be attended to - see: 
 
