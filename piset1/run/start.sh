@@ -27,10 +27,10 @@ echo ""
 
 # Drum machine 
 # Launch ttymii (add -v for verbose output)
-echo ""
-echo "starting arduino drum machine"
-echo ""
-ttymidi -s /dev/ttyACM0 -b 38400 -n arduino &
+#echo ""
+#echo "starting arduino drum machine"
+#echo ""
+#ttymidi -s /dev/ttyACM0 -b 38400 -n arduino &
 
 # Start the sequencer & load the playlist 
 # (we have to switch directories to make the playlist work!)
@@ -39,7 +39,7 @@ echo ""
 echo "starting seq24plus"
 echo ""
 cd ../set/
-seq24plus -X set.pls &
+seq24plus -X eomic.pls &
 cd ../run/
 sleep 3
 
@@ -52,7 +52,7 @@ echo "making ALSA connections"
 echo ""
 aconnect seq24:1 BME700:0
 aconnect seq24:5 yoshimi-yg:0
-aconnect seq24:7 roadrunner:0
+aconnect seq24:6 roadrunner:0
 
 
 #connect direct to the Kawai drum m/c

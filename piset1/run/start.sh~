@@ -17,7 +17,7 @@ echo ""
 echo ""
 echo "starting crumar roadrunner"
 echo ""
-. ./crumar1.sh
+. ./roadrunner.sh
 
 # Launch and connect yoshimi
 echo ""
@@ -27,10 +27,10 @@ echo ""
 
 # Drum machine 
 # Launch ttymii (add -v for verbose output)
-echo ""
-echo "starting arduino drum machine"
-echo ""
-ttymidi -s /dev/ttyACM0 -b 38400 -n arduino &
+#echo ""
+#echo "starting arduino drum machine"
+#echo ""
+#ttymidi -s /dev/ttyACM0 -b 38400 -n arduino &
 
 # Start the sequencer & load the playlist 
 # (we have to switch directories to make the playlist work!)
@@ -39,7 +39,7 @@ echo ""
 echo "starting seq24plus"
 echo ""
 cd ../set/
-seq24plus -X set.pls &
+seq24plus -X eomic.pls &
 cd ../run/
 sleep 3
 

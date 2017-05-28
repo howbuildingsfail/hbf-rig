@@ -4,11 +4,15 @@
 
 ##Set list
 
-- Meaningful Work
-- Martyn Lives
-- The World is a bubble
-- Creative Supply
-- To Get Music
+
+```
+                        BME MEM
+- Meaningful Work       5 or 4
+- Martyn Lives          3
+- The World is a bubble -
+- Creative Supply		2
+- To Get Music          -
+```
 
 ###Martyn Lives
 
@@ -16,8 +20,9 @@ Got the drums - need to find the BME700 Memory to go with it - think it might be
 
 ###Creative Supply 
 
-Again - have to find the bass sound
+Was called Peasholme Green 74 in HBF dropbox/scripts/nextset/set
 
+Again - have to find the bass sound: Have found one similar with a different fall value for now. 
 
 ###To Get Music
 
