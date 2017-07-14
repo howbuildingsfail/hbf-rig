@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <song>
  <version>0.9.6-beta3</version>
- <bpm>120</bpm>
+ <bpm>158</bpm>
  <volume>0.73</volume>
  <metronomeVolume>0.5</metronomeVolume>
  <name>Untitled Song</name>
@@ -16,15 +16,15 @@
  <swing_factor>0</swing_factor>
  <instrumentList>
   <instrument>
-   <id>0</id>
-   <name>909 x-over</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>1</volume>
+   <id>16</id>
+   <name>r100-bd1</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
    <pan_R>1</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -38,10 +38,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
+   <midiOutChannel>-1</midiOutChannel>
    <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/909_xOver_4a.wav</filename>
+    <filename>/bd1.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -59,15 +59,15 @@
    </layer>
   </instrument>
   <instrument>
-   <id>1</id>
-   <name>808 x-over</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>1</volume>
+   <id>17</id>
+   <name>r100-sd3(stick)</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
    <pan_R>1</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -81,10 +81,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>61</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/808_xOver_2.wav</filename>
+    <filename>/sd3(stick).wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -102,15 +102,15 @@
    </layer>
   </instrument>
   <instrument>
-   <id>2</id>
-   <name>sim kick 2</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>1</volume>
+   <id>18</id>
+   <name>r100-sd1</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
    <pan_R>1</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -124,10 +124,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>62</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/sim_k02-0.wav</filename>
+    <filename>/sd1.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -145,15 +145,15 @@
    </layer>
   </instrument>
   <instrument>
-   <id>3</id>
-   <name>77 kick</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.97</volume>
+   <id>19</id>
+   <name>r100-clap</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
    <pan_R>1</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -167,10 +167,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>63</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/rhythm77_bd.wav</filename>
+    <filename>/claps.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -188,15 +188,15 @@
    </layer>
   </instrument>
   <instrument>
-   <id>4</id>
-   <name>77 snare</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.92</volume>
+   <id>23</id>
+   <name>r100-sd2</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
    <pan_R>1</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -210,10 +210,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>64</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/rhythm77_sn.wav</filename>
+    <filename>/sd2.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -231,15 +231,15 @@
    </layer>
   </instrument>
   <instrument>
-   <id>5</id>
-   <name>909 snare</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.86</volume>
+   <id>21</id>
+   <name>r100-tomlo</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
    <pan_R>1</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -253,10 +253,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>65</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/909sn.wav</filename>
+    <filename>/tomlo.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -275,14 +275,14 @@
   </instrument>
   <instrument>
    <id>6</id>
-   <name>909 clap</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.92</volume>
+   <name>Closed HH</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.89</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
-   <pan_R>1</pan_R>
-   <gain>1</gain>
-   <filterActive>true</filterActive>
+   <pan_R>0.78</pan_R>
+   <gain>2.5</gain>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -296,53 +296,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>66</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/909clap.wav</filename>
-    <ismodified>false</ismodified>
-    <smode>forward</smode>
-    <startframe>0</startframe>
-    <loopframe>0</loopframe>
-    <loops>0</loops>
-    <endframe>0</endframe>
-    <userubber>0</userubber>
-    <rubberdivider>1</rubberdivider>
-    <rubberCsettings>4</rubberCsettings>
-    <rubberPitch>1</rubberPitch>
-    <min>0</min>
-    <max>1</max>
-    <gain>1</gain>
-    <pitch>0</pitch>
-   </layer>
-  </instrument>
-  <instrument>
-   <id>7</id>
-   <name>77 tom low</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.9</volume>
-   <isMuted>false</isMuted>
-   <pan_L>1</pan_L>
-   <pan_R>1</pan_R>
-   <gain>1</gain>
-   <filterActive>true</filterActive>
-   <filterCutoff>1</filterCutoff>
-   <filterResonance>0</filterResonance>
-   <FX1Level>0</FX1Level>
-   <FX2Level>0</FX2Level>
-   <FX3Level>0</FX3Level>
-   <FX4Level>0</FX4Level>
-   <Attack>0</Attack>
-   <Decay>0</Decay>
-   <Sustain>1</Sustain>
-   <Release>1000</Release>
-   <randomPitchFactor>0</randomPitchFactor>
-   <muteGroup>-1</muteGroup>
-   <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>67</midiOutNote>
-   <layer>
-    <filename>/rhythm77_low_tom.wav</filename>
+    <filename>/closehihat3.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -361,100 +318,14 @@
   </instrument>
   <instrument>
    <id>8</id>
-   <name>77 tom hi</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.96</volume>
-   <isMuted>false</isMuted>
-   <pan_L>1</pan_L>
-   <pan_R>1</pan_R>
-   <gain>1</gain>
-   <filterActive>true</filterActive>
-   <filterCutoff>1</filterCutoff>
-   <filterResonance>0</filterResonance>
-   <FX1Level>0</FX1Level>
-   <FX2Level>0</FX2Level>
-   <FX3Level>0</FX3Level>
-   <FX4Level>0</FX4Level>
-   <Attack>0</Attack>
-   <Decay>0</Decay>
-   <Sustain>1</Sustain>
-   <Release>1000</Release>
-   <randomPitchFactor>0</randomPitchFactor>
-   <muteGroup>-1</muteGroup>
-   <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>68</midiOutNote>
-   <layer>
-    <filename>/rhythm77_high_tom.wav</filename>
-    <ismodified>false</ismodified>
-    <smode>forward</smode>
-    <startframe>0</startframe>
-    <loopframe>0</loopframe>
-    <loops>0</loops>
-    <endframe>0</endframe>
-    <userubber>0</userubber>
-    <rubberdivider>1</rubberdivider>
-    <rubberCsettings>4</rubberCsettings>
-    <rubberPitch>1</rubberPitch>
-    <min>0</min>
-    <max>1</max>
-    <gain>1</gain>
-    <pitch>0</pitch>
-   </layer>
-  </instrument>
-  <instrument>
-   <id>9</id>
-   <name>77 chh</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.93</volume>
-   <isMuted>false</isMuted>
-   <pan_L>1</pan_L>
-   <pan_R>1</pan_R>
-   <gain>1</gain>
-   <filterActive>true</filterActive>
-   <filterCutoff>1</filterCutoff>
-   <filterResonance>0</filterResonance>
-   <FX1Level>0</FX1Level>
-   <FX2Level>0</FX2Level>
-   <FX3Level>0</FX3Level>
-   <FX4Level>0</FX4Level>
-   <Attack>0</Attack>
-   <Decay>0</Decay>
-   <Sustain>1</Sustain>
-   <Release>1000</Release>
-   <randomPitchFactor>0</randomPitchFactor>
-   <muteGroup>-1</muteGroup>
-   <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>69</midiOutNote>
-   <layer>
-    <filename>/rhythm77_ch.wav</filename>
-    <ismodified>false</ismodified>
-    <smode>forward</smode>
-    <startframe>0</startframe>
-    <loopframe>0</loopframe>
-    <loops>0</loops>
-    <endframe>0</endframe>
-    <userubber>0</userubber>
-    <rubberdivider>1</rubberdivider>
-    <rubberCsettings>4</rubberCsettings>
-    <rubberPitch>1</rubberPitch>
-    <min>0</min>
-    <max>1</max>
-    <gain>1</gain>
-    <pitch>0</pitch>
-   </layer>
-  </instrument>
-  <instrument>
-   <id>11</id>
-   <name>909 ohh</name>
-   <drumkit>tech1midimap</drumkit>
+   <name>Pedal HH</name>
+   <drumkit>R100+</drumkit>
    <volume>0.89</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
-   <pan_R>1</pan_R>
+   <pan_R>0.78</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -468,10 +339,96 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>70</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/909ohh.wav</filename>
+    <filename>/pedalhihat.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>1</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>25</id>
+   <name>r100-tomhi</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>1</Sustain>
+   <Release>1000</Release>
+   <randomPitchFactor>0</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/tomhi.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>1</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>24</id>
+   <name>r100-tommid</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>1</Sustain>
+   <Release>1000</Release>
+   <randomPitchFactor>0</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/tommid.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -490,14 +447,14 @@
   </instrument>
   <instrument>
    <id>10</id>
-   <name>77 ohh</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.86</volume>
+   <name>Open HH</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
-   <pan_R>1</pan_R>
-   <gain>1</gain>
-   <filterActive>true</filterActive>
+   <pan_R>0.84</pan_R>
+   <gain>1.45</gain>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -511,10 +468,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>72</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/rhythm77_oh.wav</filename>
+    <filename>/openhat2.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -532,15 +489,15 @@
    </layer>
   </instrument>
   <instrument>
-   <id>12</id>
-   <name>FX 1</name>
-   <drumkit>tech1midimap</drumkit>
+   <id>26</id>
+   <name>r100-cowbell</name>
+   <drumkit>R100+</drumkit>
    <volume>0.8</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
    <pan_R>1</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -554,10 +511,53 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>73</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/fx_09.wav</filename>
+    <filename>/cowbell.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>1</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>27</id>
+   <name>r100-ride1</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>1</Sustain>
+   <Release>1000</Release>
+   <randomPitchFactor>0</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/ride1.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -576,14 +576,14 @@
   </instrument>
   <instrument>
    <id>13</id>
-   <name>FX 2</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.8</volume>
+   <name>Crash</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.69</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
-   <pan_R>1</pan_R>
+   <pan_R>0.88</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -597,10 +597,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>74</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/fx_10.wav</filename>
+    <filename>/cra_Rock_a.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -619,14 +619,14 @@
   </instrument>
   <instrument>
    <id>14</id>
-   <name>FX 3</name>
-   <drumkit>tech1midimap</drumkit>
+   <name>Ride Rock</name>
+   <drumkit>R100+</drumkit>
    <volume>0.8</volume>
    <isMuted>false</isMuted>
-   <pan_L>1</pan_L>
+   <pan_L>0.58</pan_L>
    <pan_R>1</pan_R>
-   <gain>1</gain>
-   <filterActive>true</filterActive>
+   <gain>3.7</gain>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -640,10 +640,10 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>75</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/fx_17b.wav</filename>
+    <filename>/ride2.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>
@@ -662,14 +662,14 @@
   </instrument>
   <instrument>
    <id>15</id>
-   <name>sim bass 2</name>
-   <drumkit>tech1midimap</drumkit>
-   <volume>0.8</volume>
+   <name>Crash Jazz</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.77</volume>
    <isMuted>false</isMuted>
    <pan_L>1</pan_L>
-   <pan_R>1</pan_R>
+   <pan_R>0.78</pan_R>
    <gain>1</gain>
-   <filterActive>true</filterActive>
+   <filterActive>false</filterActive>
    <filterCutoff>1</filterCutoff>
    <filterResonance>0</filterResonance>
    <FX1Level>0</FX1Level>
@@ -683,10 +683,268 @@
    <randomPitchFactor>0</randomPitchFactor>
    <muteGroup>-1</muteGroup>
    <isStopNote>false</isStopNote>
-   <midiOutChannel>0</midiOutChannel>
-   <midiOutNote>76</midiOutNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
    <layer>
-    <filename>/sim_bass_23_01.wav</filename>
+    <filename>/crash.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>1</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>20</id>
+   <name>sr-88-bd</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>0.68</Sustain>
+   <Release>0</Release>
+   <randomPitchFactor>0.88</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/sr-88-bd-mid2.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>4</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>22</id>
+   <name>sr-88-sd</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>1</Sustain>
+   <Release>1000</Release>
+   <randomPitchFactor>0</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/sr-88-sd-mid2.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>4.05</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>28</id>
+   <name>sr-88-hh</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>1</Sustain>
+   <Release>1000</Release>
+   <randomPitchFactor>0</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/sr-88-hh-mid2.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>3.95</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>29</id>
+   <name>sr-88-cym</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>1</Sustain>
+   <Release>1000</Release>
+   <randomPitchFactor>0</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/sr-88-cym-mid2.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>3.45</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>30</id>
+   <name>31</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>1</Sustain>
+   <Release>1000</Release>
+   <randomPitchFactor>0</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/emptySample.wav</filename>
+    <ismodified>false</ismodified>
+    <smode>forward</smode>
+    <startframe>0</startframe>
+    <loopframe>0</loopframe>
+    <loops>0</loops>
+    <endframe>0</endframe>
+    <userubber>0</userubber>
+    <rubberdivider>1</rubberdivider>
+    <rubberCsettings>4</rubberCsettings>
+    <rubberPitch>1</rubberPitch>
+    <min>0</min>
+    <max>1</max>
+    <gain>1</gain>
+    <pitch>0</pitch>
+   </layer>
+  </instrument>
+  <instrument>
+   <id>31</id>
+   <name>32</name>
+   <drumkit>R100+</drumkit>
+   <volume>0.8</volume>
+   <isMuted>false</isMuted>
+   <pan_L>1</pan_L>
+   <pan_R>1</pan_R>
+   <gain>1</gain>
+   <filterActive>false</filterActive>
+   <filterCutoff>1</filterCutoff>
+   <filterResonance>0</filterResonance>
+   <FX1Level>0</FX1Level>
+   <FX2Level>0</FX2Level>
+   <FX3Level>0</FX3Level>
+   <FX4Level>0</FX4Level>
+   <Attack>0</Attack>
+   <Decay>0</Decay>
+   <Sustain>1</Sustain>
+   <Release>1000</Release>
+   <randomPitchFactor>0</randomPitchFactor>
+   <muteGroup>-1</muteGroup>
+   <isStopNote>false</isStopNote>
+   <midiOutChannel>-1</midiOutChannel>
+   <midiOutNote>60</midiOutNote>
+   <layer>
+    <filename>/emptySample.wav</filename>
     <ismodified>false</ismodified>
     <smode>forward</smode>
     <startframe>0</startframe>

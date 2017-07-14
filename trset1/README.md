@@ -1,6 +1,26 @@
 
 
 
+# Set for 170719 gig
+
+*Candidate songs are:*
+
+
+```	
+		NAME			draft? 	fuzz
+								code?
+*		Meaningful work	Y		N
+*		Dead Famous		Y		N
+*		Gob Can			Y		N
+		WWDD?			Y		N
+*		fizz bang		Y		N
+		Crap Band		Y		N
+*		Roisin			N		N
+*		I am your job	Y		N
+*		Climate Denial	N		N
+```
+
+NB! Roisin is what "Sometimes A Great Notion" was coded for...
 
 
 

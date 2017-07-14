@@ -21,7 +21,7 @@ fi
 
 
 #seq24 &
-cd set
+cd ../set
 ~/git/seq24plus/src/seq24plus -X setx.pls &
 cd ..
 sleep 3
