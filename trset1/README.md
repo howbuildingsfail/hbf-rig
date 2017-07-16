@@ -23,6 +23,62 @@
 NB! Roisin is what "Sometimes A Great Notion" was coded for...
 
 
+#TODOLIST: 
+
+##00: Setup
+
+- Remove hbf autostart from pi -
+- startup script
+- figure out drum settings for each track
+
+
+
+##01: Meaningful Work
+
+- Add volca wibbles to front - at v. least a long note set so I can muck about over the top
+- Verse guitar is *very* quiet using current settings - whyzat? 
+
+		finance account recovery executive  bullshit job
+		customer experience lead bullshit job
+		loyalty databse manager bullshit job
+		tattoo fixer bullshit job
+		passenger service agent supervisor bullshit job
+
+
+
+##02: Dead Famoose
+
+- Rehearse structure!!
+- Are the drums ok? 
+- Does it need anything else in it? 
+
+##03: Gob can
+
+- I like the low-level volca on the 170714 rh here...
+
+##04: fizzbang
+
+- just get some lyrics together for last chorous
+
+##05: Landfill music
+
+-fix that gap in the intro!
+
+It won't be long
+Till you wanna move on from this
+
+Feeling now
+
+we'll move it onto landfil
+
+
+Second Verse
+Exactly the same as the first
+
+##10: Climate Denial 
+
+
+- Get rid of the high-pitched D bit
 
 
 
