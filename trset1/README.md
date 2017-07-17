@@ -65,15 +65,26 @@ NB! Roisin is what "Sometimes A Great Notion" was coded for...
 -fix that gap in the intro!
 
 It won't be long
-Till you wanna move on from this
+Till you move on from this
+to another song
+and on to the next one
 
-Feeling now
+we're moving onto **landfill**
+we're gonna make **landfill music**
+we're working an assembly line
+filling up the **land fill land fill**
 
-we'll move it onto landfil
-
+muuuuuuusic (synth under)
 
 Second Verse
 Exactly the same as the first
+plastic feelings
+that won't degrade for a hundred years
+
+
+Feeling now
+
+
 
 ##10: Climate Denial 
 
