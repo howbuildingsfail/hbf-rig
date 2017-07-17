@@ -67,7 +67,7 @@ NB! Roisin is what "Sometimes A Great Notion" was coded for...
 It won't be long
 Till you move on from this
 to another song
-and on to the next one
+and on and on to the next one next one
 
 we're moving onto **landfill**
 we're gonna make **landfill music**
@@ -79,10 +79,20 @@ muuuuuuusic (synth under)
 Second Verse
 Exactly the same as the first
 plastic feelings
-that won't degrade for a hundred years
+that won't degrade for a hundred years because
 
+this is just **landfill**
+we make **landfill music**
+we're working an assembly line
+filling up the **land fill land fill**
 
-Feeling now
+if your Feeling low
+it's too late to say so say so
+can't find the pictures
+can't make the scene because
+
+it's all going into landfill
+
 
 
 
