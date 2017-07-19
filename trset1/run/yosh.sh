@@ -14,7 +14,7 @@ sleep 4
 # connect to jack audio
 #  jack_connect yoshimi-yz:left system:playback_1
 #  jack_connect yoshimi-yz:right system:playback_2
-  jack_connect yoshimi-yg:left system:playback_1
+  jack_connect yoshimi-yg:left system:playback_2
   jack_connect yoshimi-yg:right system:playback_2
   #headphones: 
 #  jack_connect ZynAddSubFX_1:out_1 system:playback_3

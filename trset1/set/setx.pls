@@ -2,7 +2,8 @@ MeaningfulWork.midi
 DeadFamous.midi
 03_GobCan.midi
 06_fizzbang.midi
-SometimesAGreatNotion.midi
+sometimesAGreatNotion.midi
 midlifecrisis.midi
 12_iabymjob.midi
+ClimateDenial.midi
 03_crapband.midi
