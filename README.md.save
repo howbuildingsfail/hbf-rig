@@ -1,0 +1,13 @@
+# hbf-rig
+
+```
+pwd = synth band initials + (fruit2 * 11)
+```
+
+
+#startup scripts
+
+### `etc/profile` method
+
+There's a commented-out bit in /etc/profile that runs start.sh, but because VNC starts a new window environment, the script is called twice!
+

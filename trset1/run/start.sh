@@ -26,20 +26,31 @@ cd ../set
 cd ..
 sleep 3
 
+
+
+
+
 ############################################################
 
 #connect direct to the drum m/c
-aconnect seq24:0 USB2.0-MIDI:0
+aconnect seq24:0 CH345:0
 #aconnect seq24:0 Hydrogen:0
 
 aconnect seq24:1 BME700:0
-#aconnect seq24:2 HammondB3:0
-#aconnect seq24:3 yoshimi-yz:0
 aconnect seq24:5 yoshimi-yg:0
-#aconnect seq24:6 roadrunner:0
 
 #connect to the Volca Keys:
 aconnect seq24:15 'USB Midi':0
 aconnect seq24:6 'USB Midi':0
+
+#connect the fuzzbox
+echo "connecting fuzzbox to seq24"
+
+##Fuzzbox (beware: the stab control has interfernce from the pi
+#too experimental for 19/07/17, sadly...
+#ttymidi -s /dev/ttyUSB0 -b 38400 -n fzbx &
+#sleep 1
+#aconnect seq24:12 'fzbx':1
+
 
 
