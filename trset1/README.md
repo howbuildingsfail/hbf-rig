@@ -1,5 +1,20 @@
 
 
+#Gig post mortem
+
+*Not the best... Drum machine fucked up the first half of the set until I reset it. Sounded ok after that, but the damage was done. Some liked it  -or were polite about it at least*
+
+- **Meaningful Work** just didn't work with the drums. Had to abandon it.
+- **Gob Can** made it through this one with strange thumpy sounds
+- **Fizz Bang** sounded mighty fine in soundcheck, but was a bit wonky with the bass drum missing
+- **Sometimes a great notion** stumbled through this one. It fell to bits tbh. Underrehearsed probly
+- **Landfill Music** had to restart the drum machine cos it just wasn't woiking. Went with the stock sounds - ripped out the potnoodle switch box also - it seemed to settle down then. Could play stuff after that
+- **ii am yr jb** Did a good version of this I think - possibly the highlight of the set
+- **Ckimate Deniak** Went well, ended well. Middle bit didn't seem that great this time - trying to do too much.. Need some more lyrics I think though
+
+
+I need to do some testing on the drum machine to make sure this doesn't happen again - I think the switchboard needs to be soldered in properly to avoid these problems, but tbh I *still* can't figure out what went wrong with it - maybe if I'd restarted it earlier in the set then it would have been fine. 
+
 
 # Set for 170719 gig
 
@@ -43,7 +58,7 @@ NB! Roisin is what "Sometimes A Great Notion" was coded for...
 		loyalty databse manager bullshit job
 		tattoo fixer bullshit job
 		passenger service agent supervisor bullshit job
-
+		homes under the hammer - bullshit job
 
 
 ##02: Dead Famoose
@@ -55,6 +70,30 @@ NB! Roisin is what "Sometimes A Great Notion" was coded for...
 ##03: Gob can
 
 - I like the low-level volca on the 170714 rh here...
+
+##03a: Sometimes a great notion
+
+		Sometimes a great notion
+		comes up from inside
+		deeper than the ocean 
+		nearly twice as wide
+		
+		Day after tomorrow 
+		is already to long
+		first thing in the morning
+		we gotta get off get on get 
+		
+		Roisiiiiiiiiiiiiin
+		are you coming with me? 
+		
+		our elected representatives
+		don't listen anyway
+		out elected representitives
+		dont listen any way eeay 
+		
+		Roisiiiiiiiiiiiiiin
+		Are you coming with me
+
 
 ##04: fizzbang
 
@@ -93,13 +132,14 @@ can't make the scene because
 
 it's all going into landfill
 
-
+too many wankers, plastic 
+feelings, and not enough control
 
 
 ##10: Climate Denial 
 
 
-- Get rid of the high-pitched D bit
+- DONE: Get rid of the high-pitched D bit
 
 
 
