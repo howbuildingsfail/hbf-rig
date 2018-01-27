@@ -70,3 +70,21 @@ To upload, use the menu on TouchOsc on your phone - as long as you've got the ip
 
 
 
+
+# Yoshimi
+
+...doesn't seem to install correctly using `apt-get`. Cloned from github. 
+
+Needed to install the following for the build: 
+
+- cmake-curses-gui
+-  libfftw3-dev 
+- libmxml-dev
+- libfontconfig-dev
+- libcairo-dev
+- libfltk1.3-dev
+- libreadline-dev	
+
+
+
+
