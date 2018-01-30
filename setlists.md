@@ -31,7 +31,9 @@
 
 ### Rehearsal, 180129
 
-I tried to do the whole set, but there were problems with the fuzzbox and touchosc, and I don't have a playlist yet, so I did what I could. Unfortunately the vocals are a little quiet on the recording. Whilst I was performing, I felt as if there was something missing, but listening back, it's not bad! In the list below, songs in brackets werent' done!
+I tried to do the whole set, but there were problems with the fuzzbox and touchosc, and I don't have a playlist yet, so I did what I could. Unfortunately the vocals are a little quiet on the recording. Whilst I was performing, I felt as if there was something missing, but listening back, it's not bad! 
+I felt I had just about enough to do whilst performing - much more and it'd fall to bits. It'd be nice to get the slideshow sorted tho.
+In the list below, songs in brackets werent' done!
 
 - *(Into The Silence)* - need to get the midi file sorted for this.
 - *Actually Reading Comics* - haven't quite got the structure there yet. Maybe some sonic cues to know when to sing?
@@ -43,7 +45,7 @@ I tried to do the whole set, but there were problems with the fuzzbox and toucho
 - *Creative Supply* - The drums need fixing! - word timing needs working on
 - *Walk Around* - Drums need fixing again - liked the mucking about with the volca though. Possibly introduce a dropout on the bar starting `debt fuelled worry`
 - *We Are So Facile* - ran out of time - would have needed to code it up...
-- *To Get Music*
+- *To Get Music* - no time. 
 
 
 Need to make sure the following are fixed:
