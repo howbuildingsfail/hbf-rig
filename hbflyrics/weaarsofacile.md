@@ -5,9 +5,9 @@
 
 
 We are so facile
-objects over experiences
+objects over experience
 We are so facile
-ersatz convenience
+ersatz conveniences
 
 We are so facile
 there is nothing left
@@ -16,6 +16,11 @@ We are so facile
 cancel belief
 because it's ok google
 
+w.a.s.f.
+beleive the adverts
+w.a.s.f.
+
+
 
 we were never so young
 we were frightened
@@ -23,6 +28,17 @@ we were stupid
 we were
 
 
+we are so facile
+if you can't see my mirrors 
+then I can't see you
+
+wasf
+property before people
+wasf
+sofas over socialising
+wasf
+convenience food is
+lead in my belly
 
 
 

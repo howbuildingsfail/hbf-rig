@@ -15,7 +15,7 @@ sleep 2
 # THE FOLLOWING LINES ARE FOR BRISTOL VERSION 0.40.8-1 ON CYBULA LAPTOP
 # Launch & connect Bristol BME700 
 #             bme700  midi channel 2                named BME700, load memory file 4
-startBristol -roadrunner -channel 1 -jack -midi seq -register roadrunner -voices 4 -load 3  -gain 5&
+startBristol -roadrunner -channel 7 -jack -midi seq -register roadrunner -voices 4 -load 3  -gain 5&
 sleep 4
 # connect to jack
   jack_connect roadrunner:out_left system:playback_2

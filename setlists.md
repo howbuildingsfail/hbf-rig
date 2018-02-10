@@ -56,3 +56,20 @@ Need to make sure the following are fixed:
 - playlist - let's get on this first - it makes things so much easier
 - UBUNTU - which one am I going to use? 16.04 with unity looks good atm. 
 
+### Rehearsal 180204
+
+- *Actually Reading Comics* 0:00 - 3.49 - went well! might need to extend final verse
+- *Red Mecca Bingo* 4:00-5:15  Drums didn't sound that good! 5:38-8:40  The words work ok - but I need to learn them and 
+- *Climate Denial* 8:41- There's a weird bit here - struggled to get the fuzzbox working properly for some reason - possibly incompetence, but possibly instability (actually it's because the arduino on the midi is set to omni atm) 9:42-14:15
+- *Martyn Lives* 16:40-20:15 (probably no need for the fuzzbox on this... turn it down at least!)
+- *Click Bait* 21:40-30:12 Somehow struggled to get the volca and roadrunner working proply for a bit - not sure all the presets for the volca are working either. Some great fuzzbox at the end!
+- *Creative Supply* 30:20-33:30 - need to get the drums sorted for this
+- *Walk Around* 33:40 - drums not quite there....
+- *We Are So Facile* - We have to finish this! Possibly change the bassline a bit so its less of a copy. Incorporate the guitar bit 
+- *To Get Music* good but a bit much fzbx
+
+**Decision:** - Don't do *Climate Denial* or *Walk Around* 
+**Decision:** - NO GUITAR!
+
+
+

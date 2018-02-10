@@ -12,6 +12,9 @@
 
 ##Tone pots etc. 48-49
 
+There's no documentation on these, but I did read something about these controls somewhere
+basically
+
 3/11	Midi top left
 3/10	Midi bottom left
 3/0		Bass
@@ -73,5 +76,12 @@ The commands above *should* work, but there are problems - like this:
 		Aug 29 11:46:35 brighton [997.925476] midi banksel: 0, 64
 
 37,39,40 - Does control 'chorous wet' - but only seems to set value to zero
+
+##Panel
+
+There is no info on what the buttons
+
+
+
 
 
