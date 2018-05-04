@@ -1,0 +1,148 @@
+<!DOCTYPE html> <html lang="en">     
+<head>         
+<meta charset="utf-8">         
+<title>H. B. F.</title>   
+<style>
+@keyframes example {
+    0% {background-color: #000;}
+    23% {background-color: #222;}
+    25%{background-color: red;}
+    27% {background-color: #222;}
+    50% {background-color: #444;}
+    100% {background-color: #000;}
+}
+
+@keyframes fg {
+    0% {color: #666;}
+    50% {color: #000;}
+    73% {color: #333;}
+    75%{color: red;}
+    77% {color: #333;}
+    100% {color: #666;}
+}
+
+
+html *
+{
+   font-family: Arial !important;
+}
+body {
+  padding:50px;
+  font:12px Menlo;
+  color:#FAFAFA;
+  background-color: #000000;
+  font-weight:200;
+  text-align: left;
+  overflow: hidden;
+  animation-name: example;
+  animation-duration: 201s;
+  animation-iteration-count: infinite;
+}
+
+h1 {
+  font-size:200px;
+  font-style: bold;
+  animation-name: fg;
+  animation-duration: 131s;
+  animation-iteration-count: infinite;
+}
+</style>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+//Get rand value between max and min
+
+function randmm(max, min){
+	return min + (Math.random()*(max - min));
+}
+
+
+
+$(document).ready(function(){
+    setInterval('cycleMe()', 40);
+});
+
+
+
+
+function cycleMe(){
+
+
+	divstring = '<div style="position:absolute;width:25px;height:25px;opacity:0.3;z-index:100;background:#F00;left:'
+				+randmm($(window).width(),0)+
+				'px;top:'+randmm($(window).height(),0)+'px;"></div>'
+
+
+  //Add the div to the body
+  $("body").append(divstring).animate({left: '250px'});;
+
+
+}
+
+
+
+
+// Fade function adapted from
+// https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-javascript-and-css
+
+function unfade(element) {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+}
+
+/* Create some random squares */
+function randSquares(){
+
+	count =0;
+	lim = 10;
+
+	while(count < lim){
+
+	}
+
+
+}
+
+
+//$(document).ready(function(){
+//	var body = document.getElementsByTagName('body');
+//el.innerHTML = '<p><a id="clickme" href="#">Click me</a></p>';
+//document.getElementById('clickme').onclick = function (e) {
+//    e.preventDefault();
+
+//    document.body.innerHTML +='<div style="position:absolute;width:1o%;height:10%;opacity:0.3;z-index:100;background:#F00;"></div>';
+
+
+//    $("button").click(function(){
+//        $("p").slideToggle();
+//    });
+
+//)};
+
+
+
+</script>
+
+
+
+</head>     
+<body>         
+<h1>HowBuildingsFail</h1> 
+
+
+
+
+
+</body> 
+</html> 
