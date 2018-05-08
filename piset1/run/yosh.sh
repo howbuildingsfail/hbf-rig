@@ -5,7 +5,7 @@
 #yoshimi -a -l zyn.xmz -L zyn.xiz -N yz&
 #sleep 4
 
-yoshimi -a -l gahparams.xmz -L gah.xiz -N yg &
+yoshimi -a -l gahparams.xmz -L gah.xiz -N yg --no-cmdline &
 sleep 4
 
 # connect to jack audio
