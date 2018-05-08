@@ -38,9 +38,9 @@ echo ""
 echo ""
 echo "starting seq24plus"
 echo ""
-cd ../set/
-seq24plus -X eomic.pls &
-cd ../run/
+cd ../../180210woolpack
+seq24plus -X woolpack.pls &
+cd ../piset1/run/
 sleep 3
 
 ############################################################
