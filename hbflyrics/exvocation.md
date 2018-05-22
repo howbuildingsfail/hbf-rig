@@ -11,7 +11,21 @@ post-industrial posts on social media
 
 I sneer and I snipe
 
-unfinished projects 
-in my wake
-no need to explain
-no need to explain
+a ten mile long vapour trail 
+of unfinished projects   
+lies in my wake  
+no need to explain  
+no need to explain  
+no need to do them
+or revisit at all  
+
+20 summers left
+
+what money I have makes no interest
+what interests I have make no money
+
+the depression  
+came back  
+
+
+
