@@ -1,15 +1,17 @@
 
 
-This is my 
-ex vocation
-no need to explain
-the public malaise
-post-industrial posts on social media
+This is my  
+ex vocation  
+no need to explain  
+the public malaise  
+post-industrial posts on social media  
 
-20 summers left
+20 summers left  
+got no belief  
 
-
-I sneer and I snipe
+I sneer and I snipe  
+can't quiesce the running commentary  
+of criticism  
 
 a ten mile long vapour trail 
 of unfinished projects   
@@ -26,6 +28,9 @@ what interests I have make no money
 
 the depression  
 came back  
+
+ex vocation   
+20 summers left  
 
 
 
