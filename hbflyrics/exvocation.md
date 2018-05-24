@@ -32,5 +32,8 @@ came back
 ex vocation   
 20 summers left  
 
+---
+
+Aah the uninitiated. Hurry back to your wonderful bubble of excitement, you almost weren't stimulated for a second there.
 
 
