@@ -1,0 +1,75 @@
+d1 $ sound "bd sn*3 jungbass:2" |+| vowel "a e i o " |+| end "0.12"
+d1 $ silence
+
+d2 $    striate 5 $ every 3 ( striate 15)  $ rev  $ slow 4 $ sound "click:2*8" |+| speed  triwave1 |+| accelerate " 0.2"|+| vowel "o e u i"|+| bandq  "0.41 0.76 0.55 0.88 0.48 0.04"|+| shape  squarewave1
+d2 $ silence
+
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "MIDI/MOCO for LUFA MIDI 1" 1 synthController
+
+m1 <- midiStream devices "USB Midi MIDI 1" 2 synthController
+
+m1 $ midinote "[~ 12 24 23 13, ~ ~ 48]" |+| dur "0.5"
+
+m1 $ midinote "[12(2,5), 24(5,9)]" |+| dur "0.3"
+
+m1 $ midinote "24 25 26 27 28 29" |+| dur "0.1"
+
+--This one is fun
+m1 $ slow 1.2 $ every 4 (rev) (midinote "[24*8 12, 31*2 33*2]") |+| dur "0.1 0.2 0.05 0.2"
+
+m1 $ midinote "36 48 ~ ~ 24 65 72 ~ [84 97 13] ~" |+| dur "2 0.2 0.2 1 0.1 0.1 0.1 0.1 6 5 "
+
+m1 $ silence
+m1 $ note "C D F E"
+
+--------------------------------------------------------------------------------
+--MINIATMEGATRON TRYOUT - not working yet, but some success with line 13 above..!
+
+--not sure if we need to import Sound.Tidal.MIDI.Context or not yet...
+
+import Sound.Tidal.MIDI.MiniAtmegatron
+
+devices <- midiDevices
+
+a1 <- midiStream devices "MIDI/MOCO for LUFA MIDI 1" 1 matmController
+
+--This next one could be a drum pattern!
+a1 $ midinote "[24 72] [24 12] ~ 12" |+| dur "[0.5 0.05] 0.3 0.5 0.2" |+| fco "1.0 0.2"
+
+
+cps 0.8
+a1 $ midinote "[24 31] [24 12] ~ 12" |+| dur "[1 0.05] 0.8 0.95 0.82" |+| dis "0.4 0.1" |+| por "0.0 0.2 0.3 0.7 0.8"
+a1 $ silence
+
+
+--------------------------------------------------------------------------------
+--JAMJARDM TRYOUT
+
+--not sure if we need to import Sound.Tidal.MIDI.Context or not yet...yes we do!
+
+import Sound.Tidal.MIDI.JamJarDrums
+devices <- midiDevices
+j1 <- midiStream devices "MIDI in" 1 jjdController
+
+-- this is the best one! (canes the processor a bit...)
+j1 $ midinote "[36 45*2] 36 [47 49] [45 45 45 36]" |+| dur "0.25" |+| fqhc sine1 |+| bcbd (slow 4 $ "0.4 0.2 0.6 0.5 0.1") |+| fqhc (slow 3 $ "0.1 0.3 0.2 0.05 ")
+
+
+j1 $ midinote "[47 49*2] ~ [~ ~] [45 45 45 36]" |+| dur "0.25" |+| fqhc sine1 |+| bcbd (slow 4 $ "0.4 0.2 0.6 0.5 0.1") |+| fqhc (slow 3 $ "0.1 0.3 0.2 0.05 ")
+
+
+
+j1 $ every 8 (|+| fqfx1 "0.9 0.2 0.1") $ midinote "[36 45*2] 36 [47 49] [45 45 45 36]" |+| dur "0.25" |+| fqhc sine1 |+| bcbd (slow 5 $ "0.4 0.2 0.6 0.5 0.1") |+| fqhc (slow 3 $ "0.1 0.3 0.2 0.05 " )
+
+j1 $ midinote "{36(5,9), 45(5,7)}" |+| dur "0.5"  |+| fqbd "0.4 0.2 0.7 0.9 0.3"
+j1 $ midinote "{41, 36(4,2)}" |+| dur "0.1"  |+| fqbd "0.7 0.2" |+| bcbd (slow 4 $ "0.4 0.2 0.6 0.5 0.1") |+| lpsn "0.00002"
+
+cps 0.8
+a1 $ midinote "[24 31] [24 12] ~ 12" |+| dur "[1 0.05] 0.8 0.95 0.82" |+| dis "0.4 0.1" |+| por "0.0 0.2 0.3 0.7 0.8"
+a1 $ silence

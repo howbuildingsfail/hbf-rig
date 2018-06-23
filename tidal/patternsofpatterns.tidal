@@ -1,0 +1,34 @@
+qd1 $ sound "bd:2*4"
+
+
+let a = sound "bd arp"
+in
+    d1 $ a
+
+let a = sound "bd cp"
+in
+    d1 $ a
+
+
+
+let a = sound "bd sn"
+    b = sound "cp cp"
+in
+    d1 $ slowcat [a, a, b, a]
+
+
+--This doesn't work...
+d1 $ seqP [
+  (0, 2, sound "bd sn"),
+  (2, 3, sound "cp cp"),
+  (3, 4, sound "bd sn")
+]
+
+
+--This doesn't work -
+let pp = [sound "gabba sn:2", sound "cp cp"]
+in
+    d1 $ do {n <­ "{0 0 1 [0,1]}%1"; pp!!n}
+
+
+d1 $ "{0 0 1 [0,1]}%1" >>= \n ­> [sound "gabba sn:2", sound "cp cp"]!!n

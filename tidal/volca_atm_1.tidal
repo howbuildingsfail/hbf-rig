@@ -1,0 +1,233 @@
+---------
+--SETUP--
+
+
+--INCLUDE THE MIDI CONTEXT
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.MiniAtmegatron
+import Sound.Tidal.MIDI.VolcaKeys
+
+displayOutputDevices >>= putStrLn
+
+-- TODO make sure you've done ttymidi for the jamjar drums first!
+devices <- midiDevices
+
+a1 <- midiStream devices "MIDI/MOCO for LUFA MIDI 1" 1  matmController
+
+v1 <- midiStream devices "USB Midi MIDI 1" 2 keysController
+------------------------------------------------------------
+--JamJarDrums
+--NB may need to start ttymidi BEFORE starting atom!
+
+import Sound.Tidal.MIDI.JamJarDrums
+
+  j1 <- midiStream devices "MIDI in" 1 jjdController
+
+  j1 $ midinote "[36 45*2] 36 [47 49] [45 45 45 36]" |+| dur "0.145" |+| fqhc sine1 |+| bcbd (slow 4 $ "0.4 0.2 0.6 0.5 0.1") |+| fqhc (slow 3 $ "0.1 0.3 0.2 0.05 ")
+
+
+j1 $ degradeBy 0.22 $ midinote "[36 36 [40 40] 36, ~ 45 ~ 45 ~ 45 ~ 46]" |+| dur "0.145" |+| fqhc sine1 |+| bcbd (slow 4 $ "0.4 0.2 0.6 0.5 0.1") |+| fqhc (slow 3 $ "0.1 0.3 0.2 0.05 ")
+j1 $ silence
+
+------------------------------------------------------------
+
+a1 $ silence
+v1 $ silence
+------------------------------------------------------------
+
+
+--start with the volca pattern, highly degraded; gradually reduce the degrading..
+v1 $ slow 1.5 $ degradeBy 0.79255073689 $ midinote "39 [27 15] 42 15 [39 27] 72" # dur "0.02512" # det sine1 # att "0" # voi (rand) # lfo (slow 12 $ sine1) |+| por (slow 7 $ sine1) |+| delayfb (slow 5 $ saw1)
+v1 $ slow 1.5 $ degradeBy 0.479255073689 $ midinote "39 [27 15] 42 15 [39 27] 72" # dur "0.02512" # det sine1 # att "0" # voi (rand) # lfo (slow 12 $ sine1) |+| por (slow 7 $ sine1) |+| delayfb (slow 5 $ saw1)
+
+
+
+hush
+
+
+------------------------------------------------------------
+--TESTS = MINIATMEGATRON
+
+cps 1.3
+v1 $ silence
+
+a1 $ degradeBy 0.189 $  every 4 (rev) $ midinote "[60 12] [48 12] [36 24 12] 48" |+| dur "0.05" |+| por (slow 3 $ sine1)
+a1 $ degradeBy 0.245789 $  every 4 (rev) $ midinote "[12 12] [12 12] [13 13 13] 14" |+| dur "0.25" |+| por (slow 3 $ sine1)
+a1 $ slow 1.5 $ degradeBy 0.24648142445789 $  every 4 (rev) $ midinote "[36 36] [24 24] [37 96 41] 12" |+| dur "0.025125" |+| por (slow 3 $ sine1) |+| fco saw1 |+| plo (slow 5 $ sine1)
+a1 $ every 4 (|+| speed "0.5") $ every 5 (0.25 <~) $ degradeBy 0.7 $ midinote "12 [51 63 75 87] 64*2 98" |+| dur "0.2" |+| por (slow 3 $ sine1) |+| fco saw1
+
+a1 $ silence
+v1 $ slow 1.5 $ degradeBy 0.479255073689 $ midinote "39 [27 15] 42 15 [39 27] 72" # dur "0.02512" # det sine1 # att "0" # voi (rand) # lfo (slow 12 $ sine1) |+| por (slow 7 $ sine1) |+| delayfb (slow 5 $ saw1)
+v1 $ every 5 (|+| speed "0.5") $ every 4 (0.25 <~) $                 midinote "65 63 60*2 72" |+| dur "0.2"
+v1 $ every 5 (speed 0.5) $ every 4 (0.25 <~) $                 midinote "41 75 62*2 72" |+| dur "0.12"
+-----------------------------------------------------------
+
+v1 $ degradeBy 0.3 $ every 3 (rev) $ midinote "[[24 96](3,4), 36(3,7)]" |+| dur "0.72 0.3 0.4" |+| por "0.5"
+v1 $ silence
+
+a1 $  slow 3 $ every 3 (rev) $ midinote "84 48 [60*2] 72" |+| dur "0.7" |+| fln "0.1 0.2 0.3 0.4 0.5 0.6 0.9"
+a1 $  slow 3 $ every 3 (rev) $ midinote "60 48 [24*2] 48" |+| dur "0.7" |+| fln "0.1 0.2 0.3 0.4 0.5 0.6 0.9"
+a1 $ slow 2 $ degredeBy 0.9 $ midinote "36 36  48 48" |+| dur "0.0135" |+| por (slow 4 $ "0.0 0.2 0.5 0.9")
+
+a1 $ every 5 (|+| speed "0.5") $ every 4 (0.25 <~) $ every 3 (rev) $ midinote "65 63 60*2 72" |+| dur "0.2"
+
+hush
+
+v1 $ degradeBy 0.3 $ midinote "[~ 12 24 23 13, ~ ~ 96]" |+| dur "0.5 0.2 0.1 0.04"
+
+a1 $ midinote "[46(2,5), 34(5,9)]" |+| dur "0.23" |+| por "0.0"
+
+a1 $ midinote "24 25 26 27 28 29" |+| dur "0.1"
+
+--This one is fun
+a1 $ slow 4 $ every 4 (rev) (midinote "[24*8 12, 31*2 33*2]") |+| dur "0.1 0.2 0.05 0.2"
+
+j1 $silence
+a1 $silence
+
+a1 $ slow 3 $ midinote "36 48 ~ ~ 24 65 72 ~ [84 97 13] ~" |+| dur "0.2 0.2 0.2 1 0.1 0.1 0.1 0.1 6 5 "
+
+a1 $ silence
+a1 $ slow 2 $ note " 0 24 48 96" |+| por "0.8" |+| dur "0.842"
+
+--Attempting to 'zero' the miniatm to a nice sound
+a1 $ slow 2 $ note " 0 24 48 96" |+| por "0.0" |+| dur "0.242" |+| fco "0.0" |+| fen "0.0" |+| flo "0.0" |+| alo "0.0" |+| dis "0.0"  |+| frs "0.0" |+| pen "0.0" |+| plo "0.0" |+| pwm "0.0" |+| fln "0.0"
+a1 $ note " 0 24 48 96" |+| dur "0.2" |+| fwv "0.9" |+| ffl "0.0" |+| ffe "0.0" |+| fae "0.0"  |+| frs "0.0" |+| lfs "0.0" |+| lss "0.0"
+
+--------------------------------------------------------------------------------
+--MINIATMEGATRON TRYOUT - not working yet, but some success with line 13 above..!
+
+--not sure if we need to import Sound.Tidal.MIDI.Context or not yet...
+
+import Sound.Tidal.MIDI.MiniAtmegatron
+
+devices <- midiDevices
+
+a1 <- midiStream devices "MIDI/MOCO for LUFA MIDI 1" 1 matmController
+
+--This next one could be a drum pattern!
+a1 $ degradeBy 0.3 $ slow 4 $ midinote "[24 27] [24 12] ~ 12" |+| dur "[0.5 0.15] [0.3 0.5] 0.2 0.8" |+| fco "1.0 0.2"
+a1 $ silence
+v1 $ silence
+
+cps 0.8
+a1 $ midinote "[24 31] [24 12] ~ 12" |+| dur "[1 0.05] 0.8 0.95 0.82" |+| dis "0.4 0.1" |+| por "0.0 0.2 0.3 0.7 0.8"
+a1 $ silence
+
+
+--------------------------------------------------------------------------------
+--JAMJARDM TRYOUT
+
+--not sure if we need to import Sound.Tidal.MIDI.Context or not yet...yes we do!
+
+import Sound.Tidal.MIDI.JamJarDrums
+devices <- midiDevices
+j1 <- midiStream devices "MIDI in" 1 jjdController
+
+-- this is the best one! (canes the processor a bit...)
+j1 $ midinote "[36 45*2] 36 [47 49] [45 45 45 36]" |+| dur "0.25" |+| fqhc sine1 |+| bcbd (slow 4 $ "0.4 0.2 0.6 0.5 0.1") |+| fqhc (slow 3 $ "0.1 0.3 0.2 0.05 ")
+
+
+j1 $ midinote "[47 49*2] ~ [~ ~] [45 45 45 36]" |+| dur "0.25" |+| fqhc sine1 |+| bcbd (slow 4 $ "0.4 0.2 0.6 0.5 0.1") |+| fqhc (slow 3 $ "0.1 0.3 0.2 0.05 ")
+
+
+
+j1 $ every 8 (|+| fqfx1 "0.9 0.2 0.1") $ midinote "[36 45*2] 36 [47 49] [45 45 45 36]" |+| dur "0.25" |+| fqhc sine1 |+| bcbd (slow 5 $ "0.4 0.2 0.6 0.5 0.1") |+| fqhc (slow 3 $ "0.1 0.3 0.2 0.05 " )
+
+j1 $ midinote "{36(5,9), 45(5,7)}" |+| dur "0.5"  |+| fqbd "0.4 0.2 0.7 0.9 0.3"
+j1 $ midinote "{41, 36(4,2)}" |+| dur "0.1"  |+| fqbd "0.7 0.2" |+| bcbd (slow 4 $ "0.4 0.2 0.6 0.5 0.1") |+| lpsn "0.00002"
+
+cps 0.8
+a1 $ midinote "[24 31] [24 12] ~ 12" |+| dur "[1 0.05] 0.8 0.95 0.82" |+| dis "0.4 0.1" |+| por "0.0 0.2 0.3 0.7 0.8"
+
+-----------------------------------------------------------------------------------------
+--this one has promise
+--TODO figure out what the voices are in the miniatm - too much uncertainty at preZ!
+a1 $ midinote "45 44 43" |+| dur "3"
+a1 $ midinote "67 44 43" |+| dur "3"
+a1 $ midinote "33 44 43" |+| dur "3"
+a1 $ midinote "45 96 43" |+| dur "3"
+a1 $ every 4 (|+| up "4") $  slow 4 $ midinote "12 43 45" |+| dur "3"
+a1 $ slow 4 $ midinote "[15 17 13] 43 45" |+| dur "3"
+a1 $ slow 4 $ midinote "10 43 12 45" |+| dur "1.8"
+a1 $ slow 4 $ midinote "12 6 10" |+| dur "0.33"
+a1 $ degradeBy 0.7 $ slow 4 $ midinote "45 12 43" |+| dur "3"
+
+a1 $ silence
+j1 $ silence
+v1 $ silence
+
+cps 1.2
+j1 $ degradeBy 0.383 $ midinote "[36 ~ 36 ~, ~ 49 ~ 41]" |+| bcbd (slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| fqfx2 rand |+| stsn (slow 4 $ rand)
+j1 $ degradeBy 0.383 $ midinote "[36 ~ 36 ~, ~ 49 ~ 41]" |+| bcbd (slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| fqfx2 rand |+| stsn (slow 6 $ "0.9 0.8 0.7 0.6 0.5 0.4")
+j1 $ degradeBy 0.383 $ midinote "[36 ~ 36 ~, ~ 49 ~ 41]" |+| bcbd (slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| bcfx2 rand |+| every 8 (fqsn (slow 4 $ rand)
+
+
+j1 $ midinote "[36 36 36 ~, ~ ~ ~ 41]" |+| stsn (slow 5 $ saw1) |+| bcbd (slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| stsn (slow 5 $ sine1)
+j1 $ midinote "[36 ~ 36 ~, ~ ~ ~ 41, ~ 51 ~ 47 ~ 47 ~ 47]" |+| bcbd (slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| bcho "0.6" |+| fqho rand |+| fx1fq rand
+j1 $ midinote "[47(7,4), 36(9,5)]" |+| bcbd "0.3"
+
+j1 $ midinote "36*4" |+| bcbd rand |+| fqbd rand  |+| lpbd rand |+| stbd rand
+
+
+
+--fascinating!
+j1 $  midinote "[41 41 41 41,36 ~ 36 ~ 36 ~ 36 ~]"  |+| bcbd (degradeBy 0.3765 $ slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| bcho "0.6" |+| fqsn (degradeBy 0.7765 $ rand) |+| fqbd rand |+| stsn rand
+v1 $ mortal $ s "24*8" # n (irand 128) # dur rand |+| voi rand |+| delayt rand |+| delayfb rand |+| por "0.9"
+v1 $ slow 4 $ midinote "12 6 16 15" |+| dur "1.5" |+| ctf (slow 5 $ saw1) |+| delayfb "0.0"
+
+a1 $ s "12 23 24 44 " # n (irand 128) |+| dur "0.31"
+
+--random noises on the atm - nice!
+cps 0.8
+a1 $ mortal $ slow 0.25 $ midinote "36 12" # dur rand # fwv rand |+| ffl rand |+| ffe rand  |+| lfs rand |+| lss rand |+| por rand
+a1 $ midinote "[12 48] 24 12 [60 24]"
+
+a1 $ silence
+j1 $ silence
+v1 $ silence
+
+j1 $ degradeBy 0.765 $ midinote "[[41 41 41 41](4,9),[36 ~ 36 ~ 36 ~ 36 ~](8,11)]"  |+| bcbd (slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| bcho "0.6" |+| fqho rand
+v1 $ sometimes (|+| up (choose[36, 17, 20, 9, (-3), (-7), (-90), (-2)])) $ n "~ 12 ~ 24" # s "44"
+
+a1 $ silence
+j1 $ silence
+v1 $ silence
+
+a1 $  degradeBy 0.75 $ slow 4 $ midinote "10 43 12 45" |+| dur "1.8"
+
+
+
+
+v1 $ slow 1.5 $ degradeBy 0.9255073689 $ midinote "39 [27 15] 42 15 [39 27] 72" # dur "0.02512" # det sine1 # att "0" # voi (rand) # lfo (slow 12 $ sine1) |+| por (slow 7 $ sine1) |+| delayfb (slow 5 $ saw1)
+v1 $ slow 1.5 $ degradeBy 0.479255073689 $ midinote "39 [27 15] 42 15 [39 27] 72" # dur "0.02512" # det sine1 # att "0" # voi (rand) # lfo (slow 12 $ sine1) |+| por (slow 7 $ sine1) |+| delayfb (slow 5 $ saw1)
+
+--------------------------------
+--161206
+
+
+cps 1.2
+
+j1 $ slow 4 $ midinote "49*4 48*4 50*4 45*4" |+| fqfx2 rand |+| dur "4" |+| stfx2 "0.0"
+
+j1 $ slow 6 $ midinote "36 ~ ~ ~ 40 41 ~ ~ ~ 45 ~ 47 48 ~ 50 51 52" |+| dur "1" |+| stsn "0.0" |+| fqbd "0.5" |+| stho "0.5"
+
+--normalising..?
+j1 $ midinote "36" |+| bcbd "0.0" |+| fqbd "0.5" |+| stbd "0.0" |+| lpbd "0.0" |+| dur "1"
+j1 $ midinote "36 41" |+| bcsn "0.0" |+| fqsn "0.0" |+| stsn "0.0" |+| lpsn "0.0" |+| dur "0.6"
+j1 $ silence
+
+j1 $ midinote "36 ~ ~ 38 ~" |+| fqbd "0.9" |+| dur "4" |+| fqsn "0.5" |+| stsn "0.0" |+| bcsn "0.0"
+
+j1 $ degradeBy 0.2383 $ midinote "[36 ~ 36 ~, ~ 49 ~ 41]" |+| bcbd (slow 3 $ "0.04 0.2 0.01 0.1 0.5") |+| fqbd (slow 7 $ "0.4 0.2 0.6 0.5 0.1") |+| fqfx2 rand |+| stbd rand |+| fqsn rand |+| bcsn rand
+j1 $ degradeBy 0.383 $ midinote "[36 ~ 36 ~, ~ 49 ~ 41]" |+| bcbd (slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| fqfx2 rand |+| stsn (slow 6 $ "0.9 0.8 0.7 0.6 0.5 0.4")
+j1 $ degradeBy 0.383 $ midinote "[36 ~ 36 ~, ~ 49 ~ 41]" |+| bcbd (slow 3 $ "0.4 0.2 0.6 0.5 0.1") |+| bcfx2 rand |+| fqsn $ every 4 rand)
+j1 $ silence
+
+a1 $ every 2 (slow 8) $ interlace (midinote  "12 32 34 37") (every 3 rev $ midinote  "56 58 59 96 87") |+| por rand |+| voi rand
+
+a1 $ midinote "26" |+| dur "4"
+a1 $ silence
+
+v1 $ slow 3 $ midinote "36 60 1" |+| dur rand
+v1 $ silence

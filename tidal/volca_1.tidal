@@ -1,0 +1,103 @@
+---------
+--SETUP--
+
+
+--INCLUDE THE MIDI CONTEXT
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.MiniAtmegatron
+import Sound.Tidal.MIDI.VolcaKeys
+
+import Sound.Tidal.MIDI.BristolBME700
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+a2 <- midiStream devices "MIDI/MOCO for LUFA MIDI 1" 1  matmController
+
+v1 <- midiStream devices "USB Midi MIDI 1" 2 keysController
+
+v1 $ silence
+------------------------------------------------------------
+-- pen: Pitch envelope - changes the pitch - not much use in a 'clean' sound where we are trying  to play choonz!
+
+
+--start with the volca pattern, highly degraded; gradually reduce the degrading..
+v1 $ slow 1.5 $ degradeBy 0.79255073689 $ midinote "39 [27 15] 42 15 [39 27] 72" # dur "0.02512" # det sine1 # att "0" # voi (rand) # lfo (slow 12 $ sine1) |+| por (slow 7 $ sine1) |+| delayfb (slow 5 $ saw1)
+v1 $ slow 1.5 $ degradeBy 0.479255073689 $ midinote "39 [27 15] 42 15 [39 27] 72" # dur "0.02512" # det sine1 # att "0" # voi (rand) # lfo (slow 12 $ sine1) |+| por (slow 7 $ sine1) |+| delayfb (slow 5 $ saw1)
+
+cps 0.5
+cps 1.3
+
+d1 $ sound  "bd bd bd"
+
+v1 $ silence
+
+v1 $ slow 1.5 $ degradeBy 0.479255073689 $ midinote "39 [27 15] 42 15 [39 27] 72" # dur "0.02512" # det sine1 # att "0" # voi (rand) # lfo (slow 12 $ sine1) |+| por (slow 7 $ sine1) |+| delayfb (slow 5 $ saw1)
+v1 $ every 5 (|+| speed "0.5") $ every 4 (0.25 <~) $                 midinote "65 63 60*2 72" |+| dur "0.2"
+v1 $ every 5 (speed 0.5) $ every 4 (0.25 <~) $                 midinote "41 75 62*2 72" |+| dur "0.12"
+-----------------------------------------------------------
+
+v1 $ degradeBy 0.3 $ every 3 (rev) $ midinote "[[24 96](3,4), 36(3,7)]" |+| dur "0.72 0.3 0.4" |+| por "0.5"
+v1 $ silence
+
+v1 $ degradeBy 0.3 $ midinote "[~ 12 24 23 13, ~ ~ 96]" |+| dur "0.5 0.2 0.1 0.04"
+-------------------------------------------------------------
+--these are based on patterns in tidal.lurk.org/functions.html but adapted for midi
+
+v1 $ degradeBy 0.3 $ midinote "[~ 1 2 2 4 2 3 1 3, ~ ~ 9 6]" |+| dur "0.000514" |+| delay "0.001"
+
+v1 $ sound (pick <$> "[12 [22*5], [27*5]*3 34 2]" <*> slow 7 "0 1 2 3 4") |+| voi (slow 6 $ sine1)
+
+v1 $ every 4 (0.25 <~) $ midinote (density 2 "66 3 45") |+| voi "0.0"
+
+v1 $  midinote (brak "66 3 45 22 9 13 2 8") |+| dur "0.001"
+
+v1 $ slow 2 $ degrade $ midinote "[[[76*8,12*3] 124*8], 23*4]"
+|+| dur (slow 4 $ sine1) |+| por (slow 4 $ sine1)
+
+v1 $ midinote (fit 3 ["12 23", "1 24", "88 36"] "0 [~ 1] 2 1")
+
+--switch between these to make a tune on the first note
+v1 $ every 3 (rev) $ midinote (density 2 "98 56 6")
+v1 $ every 3 (rev) $ midinote (density 2 "117 56 6")
+v1 $ every 3 (rev) $ midinote (density 2 "112 56 6")
+v1 $ every 3 (rev) $ midinote (density 2 "102 56 6")
+--
+v1 $ every 3 (rev) $ midinote (density 2 "115 56 6")
+v1 $ every 3 (rev) $ midinote (density 2 "116 56 6")
+--
+v1 $ every 3 (rev) $ midinote (density 2 "~ 44 6")
+v1 $ every 3 (rev) $ midinote (density 2 "~ 32 18")
+v1 $ every 3 (rev) $ midinote (density 2 "~ 20 30")
+v1 $ every 3 (rev) $ midinote (density 2 "32 44 ~") |+| dur (slow 7 sine1)
+------------------------------------------------------------------
+
+v1 $ slowspread ($) [density 2, rev, slow 2, degradeBy 0.3, (# speed "0.8")]
+    $ midinote "[26*2 [~ 49]] [24 21]*2 32 35*4"
+
+v1 $ spread slow [2,4%3] $ midinote "32 29 37 39"
+
+--you can muck about using trunc
+v1 $ trunc 0.575 $ midinote "2 22*2 66 99*4 77 2*2 66 2*2"
+v1 $ trunc 0.475 $ midinote "2 22*2 66 99*4 77 2*2 66 2*2"
+v1 $ trunc 0.375 $ midinote "2 22*2 66 99*4 77 2*2 66 2*2"
+v1 $ trunc 0.275 $ midinote "2 22*2 66 99*4 77 2*2 66 2*2"
+v1 $ trunc 0.175 $ midinote "2 22*2 66 99*4 77 2*2 66 2*2"
+v1 $ trunc 0.075 $ midinote "2 22*2 66 99*4 77 2*2 66 2*2"
+v1 $ trunc 0.975 $ midinote "2 22*2 66 99*4 77 2*2 66 2*2"
+v1 $ trunc 0.775 $ midinote "2 22*2 66 99*4 77 2*2 66 2*2"
+
+v1 $ note "-48(3,8)"
+t1 $ clutch $ midinote "64(5,8)"
+
+v1 $ stack [
+  midinote "43 36*2" |+| dur sine1,
+  midinote "18*2 [12 22] 45 66*4" |+| dur (slow 2 $ sine1)
+]
+
+hush
+d1 $ sound "bd(3,8)"
+t1 (anticipateIn 8) $ sound "[hh*4, odx:2(3,8)]"
+t1 (anticipateIn 8) $ sound "[hh:2*3, odx(5,8)]"
+t1 (anticipateIn 8) $ sound "[hh:4*3, odx:3(7,13)]"

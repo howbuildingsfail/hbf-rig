@@ -1,0 +1,131 @@
+d1 $ sound "bd:1 bd:2 bd:3 bd:4"
+
+
+solo $ d2 $ sound "[bd:2 bd:3 bd:4, hh hc hc hc hc, arpy [arpy arpy] arpy, odx]"
+
+
+d3 $ sound "arpy"
+
+hush
+
+-- these two are identical
+d1 $        every 4 (density 4) $ sound "[bd/3 sn:2]*2 hh"
+d1 $ sound (every 4 (density 4)         "[bd/3 sn:2]*2 hh" )
+
+--I don't think delay works unless you set other parmaeters:
+d1 $ sound "bd*4" # gain "0.8" # delay "0.9"
+
+
+d1 $ sound "bd*4 [cp*8 sn:2*4]" # gain "[[1 0.8]*2 [0.5 0.7]]/2"
+
+d1 $ sound "bd*4" # gain (every 3 (rev) $ "1 0.8 0.5 0.7")
+
+--IMPORTANT: the order in which you put things matters - this will play 4 bds:
+d1 $ gain "1 0.25 0.25 0.7" # sound "bd"
+
+--this one is really cool
+d1 $ every 3 (|-| up "2") $ every 2 (|+| up "5") $ sound "arpy*5" |=| up "0 2 4 5 12"
+
+
+
+hush
+
+-- play multiple patterns at the same time:
+-- CAN WE DO THIS WITH THE VOLCA?
+-- try changing the arpy*4 to 24, 12 etx
+d1 $ sound "arpy*8" # speed "[1 0.5, 1.0 2 3 4]"  # pan (rand)
+"0 1 0.25 0.75"
+d1 $ sound "arpy*8" # speed "[1 0.4, 1.52 2.003 3 7.9]"  # pan (rand)
+d1 $ silence
+
+d3 $ sound $ samples "arpy*4" "0 1 2 6"
+d4 $ silence
+d4 $ sound "sn:2(5,8,15)"
+d4 $ sound "~ sn:2/3 ~ sn:2/5"
+d2 $ sound "bd:2(3,8,15)"
+
+-------
+
+--for midi, we can use (irand 128) to generate random values -
+
+d1 $ sound "arpy*9" # n (irand 128) # speed "0.2" # pan(rand)
+
+--This is a terrific drum riff - loads of stuf comes and goes
+d2 $ degradeBy 0.765 $ sound "[sn:2*4,bd*4]"
+
+----------------------------
+t1 anticipate $ s "drum arpy cp hh" # n (run 10)
+
+
+d1 $ sound "arpy*12" # up (run 12)
+
+d2 $ sound "sn:2(5,8,15)"
+--samba rhythm necklace
+d2 $ sound "sn:2(7,16,14)"
+
+d2 $ sound "sn:2([5 3]/2,8,15)"
+d2 $ silence
+d1 $ silence
+bps (140/60)
+cps 1
+
+--------------------------------
+
+d1 $ sound "arpy:0 arpy:2 arpy:3"
+d1 $ n "0 2 3" # s "arpy"
+d3 $ sound $ samples "arpy*4" "0 1 2 3"
+
+
+d1 $ up "0 0*2 0*4 1" # sound "[arpy, bass2, bd]"
+
+d1 $ sound "{bd hh sn cp, arpy bass2 drum notes can}"
+d1 $ sound "{~ ~ ~ ~, bd bd bd bd sn:2}"
+
+--cool variation by chaining logic:
+d5 $ every 5 (|+| speed "0.5") $ every 4 (0.25 <~) $ every 3 (rev) $  sound "bd sn arpy*2 cp" # speed "[1 1.25 0.75 1.5]/3"
+
+d1 $ sound (samples "arpy*8" (run 8)) # speed "0.25"
+d1 $ sound (samples "arpy*8" (run 8)) # speed "0.25" # cut "1"
+
+hush
+
+--tranisitions
+d1 $ sound (samples "arpy*8" (iter 4 $ run 4))
+t1 anticipate $ sound (samples "arpy(3,9)" (run 12))
+t1 anticipate  $ sound "arpy*8" # speed "[1 0.5, 1.0 2 3 4]"  # pan (rand)
+t1 (xfadeIn 16) $ sound "arpy(5,8)"
+
+
+--NOTE! need to install supercollider-sc3-plugins for this to work!
+d1 $ midinote "60 62*2" # s "supersaw"
+
+
+
+d1 $ seqP [
+  (0, 128, sound "bd bd*2"),
+  (8, 128, sound "hh*2 [sn cp] cp future*4"),
+  (16, 128, sound (samples "arpy*8" (run 16)))
+]
+
+
+
+d1 $ foldEvery [3, 4, 5, 6, 9] (striate 2) $ sound "arpy arpy:2 arpy:6 arpy:3" # speed "0.3" # pan (rand)
+
+--trying to get some classic drum beats....
+
+--Mea Ning Fu Lwor K
+bps (246/60)
+
+d1 $ smash 3 [0.9,0.99,0.999] $ sound "[bd:2 ~ ~, ~ ~ ~, hc:1 hc hc:2]" |+| vowel (slow 9 $ "a e i o")
+-- The juxBy is great! - let it go a few cycles...
+d1 $ juxBy 0.06125 (density 1.006125) $
+d1 $ sound "[bd:2 ~ ~, ~ ~ ~, ho:7 hc hc]" |+| end "0.15"
+d2 $ slow 4 $ sound "~ ~  [~ ~ sn:2] ~" |+| vowel (slow 9 $ "a e i o")
+d3 $ sound "808:4 808:2" |+|  speed rand
+d2 $ silence
+hush
+--Community pub!:
+bps (139/120)
+d1 $ sound "[bd:2 ~*2 bd:2*2 ~*2, [~ sn:2]*2 ]"
+d2 $ sound "jungbass:2 ~ ~ jungbass:2 ~ jungbass:2 jungbass:2 ~" |+| speed "1 1 1 1 1 1 0.9 0.9" |+| end "0.125"
+d2 $ sound "bass:2 ~ ~ bass:2 ~ bass:2 bass:2 ~" |+| speed "0.9 0.9 0.9 0.9 0.9 1 1"
