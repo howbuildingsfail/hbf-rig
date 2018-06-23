@@ -28,12 +28,12 @@ cp ./BME700mem/BME700?.mem ~/.bristol/memory/BME700
 cp ../presets/BME700/BME700 ~/.bristol/memory/BME700
 
 
-startBristol -bme700 -channel      2 -jack -midi seq -register BME700 -voices 1 -load 5  -gain 3&
+startBristol -bme700 -channel      1 -jack -midi seq -register tBME -voices 1 -load 5  -gain 3&
 sleep 4
 
 # connect to jack - for live, we only want to connect to one channel
   jack_connect BME700:out_left system:playback_1
-  jack_connect BME700:out_right system:playback_2
+#  jack_connect BME700:out_right system:playback_2
 
 
 #if `reconnect'

@@ -18,7 +18,7 @@ sleep 2
 startBristol -roadrunner -channel 7 -jack -midi seq -register roadrunner -voices 4 -load 3  -gain 5&
 sleep 4
 # connect to jack
-  jack_connect roadrunner:out_left system:playback_2
+  jack_connect roadrunner:out_left system:playback_1
   jack_connect roadrunner:out_right system:playback_2
   #headphones: 
 #  jack_connect roadrunner:out_left system:playback_3
