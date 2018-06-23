@@ -1,0 +1,7 @@
+#!/bin/bash
+killall dirt
+cd ~/tidal/Dirt
+./dirt &
+#cd ~/tidal
+emacs ../workshop.tidal &
+
