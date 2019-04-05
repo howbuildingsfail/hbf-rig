@@ -58,7 +58,7 @@ d1 $ $ every 5 (|+| speed "0.5") $ sound (samples "[bass:2*8(15,17), bass:3*5(16
 d1 $ sound (samples "[arpy:2*8(15,17), arpy:3(16,19)]" (iter 4 $ run 4)) |+| end (slow 7 $ saw1)
 t1 anticipate $ sound (samples "arpy(13,9)" (run 33))
 t1 anticipate  $ sound "arpy*8" # speed "[1 0.5, 1.0 2 3 4]"  # pan (rand)
-t1 (xfadeIn 16) $ sound "arpy(5,8)"
+t1 (xfadeIn 16) $ sound "arpy(5,8)" # speed "0.26"
 
 d1 $ sound "cp:1 cp:2 cp:3 ~" |+| end "0.7"
 d1 $ sound "chin:2*9(9/26)" # n (irand 128) # end "0.03" # pan(rand)
