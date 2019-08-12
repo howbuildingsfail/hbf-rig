@@ -24,3 +24,9 @@ time
 tending the vegetables  
 75 times around the sun  
 
+Before you feel Pressure
+you've got to know when to stop
+It is very hard to not measure 
+the distance between what is, what was and what should have been
+
+
