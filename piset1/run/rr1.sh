@@ -1,15 +1,15 @@
 #!/bin/bash
 
 #see bme700.sh for notes
-for i in `seq 1 10`; 
-do
-	echo "installing roadrunner memory location $i from presets"
-	cp ../presets/roadrunner/roadrunner$i.mem ~/.bristol/memory/roadrunner/roadrunner$i.mem 
-done
+#for i in `seq 1 10`; 
+#do#
+#	echo "installing roadrunner memory location $i from presets"
+#	cp ../presets/roadrunner/roadrunner$i.mem ~/.bristol/memory/roadrunner/roadrunner$i.mem 
+#done
 #Copy the midi mappings:
-cp ../presets/roadrunner/roadrunner ~/.bristol/memory/profiles/roadrunner
+#cp ../presets/roadrunner/roadrunner ~/.bristol/memory/profiles/roadrunner
 
-sleep 2
+#sleep 2
 
 
 # THE FOLLOWING LINES ARE FOR BRISTOL VERSION 0.40.8-1 ON CYBULA LAPTOP
