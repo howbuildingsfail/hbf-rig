@@ -1,0 +1,41 @@
+---
+title: "Adding pots to mini space rockers"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+Mini space rockers is based on an *astable multivibrator*. There are equations for calculating the resulting frequencies given the capacitors and resistors that are linked together around the transistors. So we can see if its worth replacing one or more of these resistors with a pot using *Maffs*. 
+
+First thing to do is load the values noted by Eric Archer and see where they sit in the audio frequency range. 
+
+Let's load the data: 
+
+```{r}
+cdata <- read.csv("msrvals.csv",stringsAsFactors = F)
+cdata[,2] <- as.numeric(cdata[,2])
+cdata[,3] <- as.numeric(cdata[,3])
+cdata[,4] <- as.numeric(cdata[,4])
+```
+
+https://www.homemade-circuits.com/transistor-astable-multivibrator-amv-calculator/
+
+https://www.electronics-tutorials.ws/waveforms/astable.html
+
+https://electrosome.com/astable-multivibrator-transistors/
+
+The equation for $t_1$ is $0.69C_1R_3$ and for $t_2$ its $0.69C_2R_2$. The cycle takes $T = t_1 + t_2$.  We can calculate all these quite easily: 
+
+```{r}
+r2 = 33000
+r3 = 33000
+cdata$t1 = 0.69 * cdata$C1 * r3 * 0.000001
+cdata$t2 = 0.69 * cdata$C2 * r2 * 0.000001
+cdata$T = cdata$t1 + cdata$t2
+cdata$F = 1/cdata$T
+```
+
+Hmm - these values look low - probably because the example is 6V and the values of R1 and R4 are different. 
+
+
