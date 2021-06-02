@@ -1,0 +1,151 @@
+
+
+
+--use the synth defined in jitka.scd
+-- http://ask.tidalcycles.org/question/134/how-do-you-control-custom-supercollider-synth-params-from-tidal/
+let (modFreq, _) = pI "modFreq" (Just 100)
+let (modAmount, _) = pI "modAmount" (Just 100)
+
+cps 1
+d1 $ striate (irand 3) $  s "bd hc sn:2 hc"
+d1 $  gap (1 + (irand 10)) $  s "bd hc sn:2 hc"
+
+
+d2 $ slow 2 $  n "0 [~ 0 0] [~ 12] [12 ~] ~ ~ ~ ~ " # modFreq (20 + irand 20) # modAmount 20 # pan rand # gain 1.0 # sound "fmshuffle"
+
+d2 $ slow 2 $  n "{0 [~ 0 0] [~ 12] },{96 78 88} " # modFreq (20 + irand 20) # modAmount 20 # pan rand # gain 1.0 # sound "fmshuffle"
+
+d2 $  n "[24 ~]*4 ~ -33 -36 ~ -17 ~ [-50*3] -39 ~ " # modFreq (400) # modAmount (irand 2)  # sound "fmshuffle"
+d2 $  degradeBy 0.25 $ n "[-15 ~ ~ -27 ~ ~]*4 " # modFreq (irand 2000) # modAmount (irand 10000)  # sound "fmshuffle"
+hush
+
+d1 $ sound "fmsuffle*8" # modFreq (irand 340)
+
+
+d1 $ slow 3 $  foldEvery [3, 11, 6] (fast (1 + (irand 3))) $ striate (irand 300) $ gap (1 + (irand 200)) $ sound "sn:2 sn:3" # gain 0.5
+
+d1 $ foldEvery [22, 11, 6] (fast (1 + (irand 3))) $ striate (irand 300) $ gap (1 + (irand 200)) $ sound "sn:3 bd:4 [~*54 bd:3] " # gain 0.5
+
+
+d1 $ striate (irand 150) $ gap "<(1 + (irand 200)),0,0,0>" $ sound "sn:3 bd:4 ~ [~*5 bd:3] " # gain 0.5
+
+
+
+
+d2 $  n "[24 ~]*4 ~ -33 -36 ~ -17 ~ [-50*3] -39 ~ " # modFreq (400) # modAmount (irand 20000000)  # sound "fmshuffle"
+d2 $ silence
+
+d2 $  degradeBy 0.55 $ n "[-27 ~ ~ -39 ~ ~]*4 " # modFreq (irand 500) # modAmount (2000 * (irand 50))  # sound "fmshuffle"
+
+
+
+-- THIS IS It!! DON'T TOUCH THE VOLCA!
+
+
+let (modFreq, _) = pI "modFreq" (Just 100)
+let (modAmount, _) = pI "modAmount" (Just 100)
+d2 $  degradeBy 0.175 $ n "[-15 ~ ~ -27 ~ ~]*4 " # modFreq (irand 25) # modAmount (irand 18000)  # sound "fmshuffle" # pan rand # gain 1
+d2 $  degradeBy 0.07525 $ n "[-15 ~ ~ -27 ~ ~]*4 " # modFreq (irand 7) # modAmount (irand 60000)  # sound "fmshuffle" # pan rand # gain 1
+d2 $ silence
+
+d1 $ striate 5 $ s "808bd 808bd:2" # pan rand
+d1 $ every 12 (fast 2) $ degradeBy 0.015 $ gap (irand 100) $ chop (irand 20) $ s "808bd [[808hc?]?]? 808sd ~ " # pan rand  # gain 0.9
+d1 $ degradeBy 0.785 $ every 12 (fast 16) $ gap (irand 100)  $ s "808bd [[808hc?]?]? 808sd ~ " # pan rand
+d1 $ silence
+
+
+
+-- this uses an irand on the ccn to randomly change the sound
+d3 $ stack [every 17 (fast (2 + irand 6)) $ degradeBy 0.028 $ slow 2 $  note "-12(5,8)?, -21(4,4), -24(5,7)?]",
+          slow 4 $ ccv (irand 127)# ccn (40 + irand 14),
+          --ccv (0 + slow 19 (sine1 * 12)) # ccn 49
+                 ]
+   # s "kzz" # midichan 15
+
+d3 $  slow 8 $ degradeBy 0.025 $  note "[-12(5,8)?, -21(4,4), -24(5,7)?]" # s "kzz" # midichan 15 # dur 80
+d3 $  slow 8 $ degradeBy 0.085 $  note "[12(5,8)?, 3(4,4), 0(5,7)?]" # s "kzz" # midichan 15 # dur 80
+d3 $ silence
+
+d4 $ slow 8 $ n "0 ~ 0 ~ 3 ~ 0 ~ " # s "kzz" # midichan 15 # dur 0.2
+d4 $ slow 4 $ degradeBy 0.75 $ n "0 ~ 12 ~ 15 ~ 0 ~ " # s "kzz" # midichan 15 # dur 0.2
+d4 $ silence
+
+hush
+
+
+d5 $ slow (16 +(irand 8)) $ s "rur*4" # vowel "i" # gain 0.85 # pan rand # begin (rand * 0.5) # end (1.75 + (rand * 0.5)) # vowel "i e ~ a" # gain (0.5 +(rand*0.5) )
+d5 $ silence
+d5 $ s "bd"
+hush
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------
+-- alternative droplets piece based on a drone in the fuzzosc..
+d1 $ s "bd"
+d1 $ slow 4 $  striate (4 + (irand 200)) $ s "808bd 808bd:2" # pan rand # room 0.3
+
+d4 $ slow 13 $ n "0 ~ 0 ~ 3 ~ 0 ~ " # s "kzz" # midichan 15 # dur 0.2
+d4 $ silence
+
+-- this uses an irand on the ccn to randomly change the sound
+d3 $ stack [every 17 (fast (2 + irand 6)) $ degradeBy 0.028 $ slow 7 $  note "-12(5,8)?, -21(4,4), -24(5,7)?]",
+          slow 4 $ ccv (irand 127)# ccn (40 + irand 14),
+          ccv (0 + slow 19 (sine1 * 12)) # ccn 49
+                 ]
+   # s "kzz" # midichan 15
+d3 $ silence
+hush
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+-- This works! glide speed 1, mem 7
+d1 $ stack [every 17 (fast (2 + irand 6)) $ slow 4 $ degradeBy 0.15 $ note "[17(3,11), ~ -18 [-12 -24] ~] " # dur 0.04,
+          ccv (32 + slow 15 (sine1 * 77)) # ccn 53,
+          ccv (0 + slow 19 (sine1 * 32)) # ccn 29
+           ]
+   # s "tbme"
+
+
+d1 $ silence
+--list of good short dirt samples..
+d1 $ s "[808lc 808hc](8,5)"
+d1 $ s "[808mt 808mc](5,8)"
+d1 $ s "[808oh 909](8,5)"
+d1 $ s "[ab](5,8)"
+
+d5 $ slow 48 $ rev $ striate (2000 + (irand 2000)) $ s "rur" # speed (0.1  + (4*rand)) # pan rand
+d5 $ silence
+
+
+
+
+--liar of good long dirt samples
+d1 $ s "speech:3"
+d1 $ slow 2 $ chop 200 $ s "ades2"

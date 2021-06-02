@@ -4,17 +4,17 @@
 
 
 
-We are so facile
-objects over experience
-We are so facile
-ersatz conveniences
+We are so facile  
+objects over experience  
+We are so facile  
+ersatz conveniences  
 
-We are so facile
-there is nothing left
-to achieve
-We are so facile
-cancel belief
-because it's ok google
+We are so facile  
+there is nothing left  
+to achieve  
+We are so facile  
+cancel belief  
+because it's ok google  
 
 w.a.s.f.
 beleive the adverts

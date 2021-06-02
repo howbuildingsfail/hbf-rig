@@ -1,0 +1,20 @@
+
+
+
+-- These are both nutty!
+
+d1 $ smash (irand 20) [0.1,0.2,0.4,0.6] $ s "bd bd bd:2 bd"
+d1 $ silence
+d2 $ smash (irand 200)[0.1,0.2,0.4,0.6] $ sound "jungbass:2" |+| speed (slow 3 $ (scale 0.25 34.5 tri1)) |+| end (slow 8 $ sine1) # pan (slow 11 $ sine1) # gain 0.85
+d2 $ silence
+
+
+d3 $ slow 16 $ brak $ n "-12*8" # pan sine # modFreq (20 + irand 20) # modAmount (irand 40) # sound "fmshuffle" # pan 0.0
+d4 $ slow 8 $ brak $ n "[[12 [15 17]], 3 [0 ~ 2 ~]*7 -2]" # pan sine # modFreq (20 + irand 20) # modAmount (irand 40) # sound "fmshuffle" # pan 1.0
+d3  $ n "0 12 22 36 48  1 2" # modFreq (4) # modAmount (irand 2)  # sound "fmsuffle"
+
+hush
+
+
+d1 $ weave 8 (speed $ (1+) <$> sinewave1) [density 4 $ every 3 ((0.75 <~) . rev) $ striate 8 $ sound "[bd*8 sn/2*4, tabla/2 sn/3, moog]/2",
+#jux (striate 4) $ smash 4 [1..4] $ every 5 (0.25<~) $ sound (samples "[sns*2 sns/5 sns/6, guitarpadam]" (slow 8 (run 4))) |+| shape "-0.3"] |+| speed "2"

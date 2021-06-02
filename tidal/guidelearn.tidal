@@ -80,7 +80,7 @@ d1 $ up "0 0*2 0*4 1" # sound "[arpy, bass2, bd]"
 
 d1 $ sound "{bd hh sn cp, arpy bass2 drum notes can}"
 d1 $ sound "{~ ~ ~ ~, bd bd bd bd sn:2}"
-
+hush
 --cool variation by chaining logic:
 d5 $ every 5 (|+| speed "0.5") $ every 4 (0.25 <~) $ every 3 (rev) $  sound "bd sn arpy*2 cp" # speed "[1 1.25 0.75 1.5]/3"
 

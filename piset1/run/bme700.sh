@@ -33,7 +33,7 @@ sleep 4
 
 # connect to jack - for live, we only want to connect to one channel
   jack_connect BME700:out_left system:playback_1
-#  jack_connect BME700:out_right system:playback_2
+  jack_connect BME700:out_right system:playback_2
 
 
 #if `reconnect'
