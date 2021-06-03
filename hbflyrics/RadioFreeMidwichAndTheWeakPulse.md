@@ -8,43 +8,23 @@ Comes out of weavers cottages
 intermittent and tuneless with zero precision
 with no backbeat to speak of
 
-<<<<<<< HEAD
-=======
-
->>>>>>> abf602043ceac3795ff460b2c092572c04a6d88b
 Some call it heavenly in its brilliance
 others, generous and confirmatory of the successes of capitalism
 I love the friends that gather together at these times
 We have construced podcasts in honour of our escaping
 This is the land where Ned Ludd died
 
-<<<<<<< HEAD
-=======
-
->>>>>>> abf602043ceac3795ff460b2c092572c04a6d88b
 The dolmen in the forest, brightly painted
 Is saying "forget the now
 live with us on this mossy bank
 out here on the perimiter the stars are coming back
 out here we are stoic - slightly grubby"
 
-<<<<<<< HEAD
 Listen to this and I'll tell you bout the puritains
 tell you bout the puritans and the loss of prayer
 tell you bout the one great knight
 wandering, the northern dream 
 tell you bout the angel 
-=======
-
-
-
-
-
-
-
->>>>>>> abf602043ceac3795ff460b2c092572c04a6d88b
-
-
 
 
 # "The Wasp (Texas Radio And The Big Beat)"

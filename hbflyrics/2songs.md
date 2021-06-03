@@ -29,7 +29,7 @@ Dancing in cinema to Sweet Mud Slade
 permanent climate
 
 
-<<<<<<< HEAD
+
 # Sid shares
 
 I've got opinions
@@ -76,18 +76,3 @@ Sid Shares
   Sid   Shares
 Sid Shares Sid Shares
 Sid Shares Sid_
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> abf602043ceac3795ff460b2c092572c04a6d88b
