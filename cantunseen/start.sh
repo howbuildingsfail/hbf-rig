@@ -13,6 +13,7 @@ ttymidi -s /dev/ttyUSB0 -b 115200 -n gran &
 
 aconnect 'nanoKEY2':0 'gran':1
 aconnect 'seq66':4 'gran':1
+aconnect 'seq66':5 'CH345':0
 
 
 
