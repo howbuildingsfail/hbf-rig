@@ -16,7 +16,7 @@ do
 	fi;
 done
 
-startBristol -bme700 -channel      2 -jack -midi seq -register BME700 -voices 1 -load 5  -gain 3&
+startBristol -bme700 -channel      2 -jack -midi seq -register BME700 -voices 1 -load 7  -gain 3&
 
 sleep 4
 

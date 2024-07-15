@@ -11,20 +11,21 @@ echo ""
 . ./countdown.sh "starting bme700 in" 10
 echo ""
 . ./bme700.sh
-sleep 1
+sleep 2
 
 # crumar roadrunner on channel 1
 echo ""
 echo "starting crumar roadrunner"
 echo ""
 . ./rr1.sh
-sleep 1
+sleep 2
 
 # Launch and connect yoshimi
 echo ""
 echo "starting yoshimi"
 echo ""
 . ./yosh.sh
+sleep 2
 
 # Drum machine 
 # Launch ttymidi (add -v for verbose output)
@@ -54,7 +55,7 @@ echo ""
 echo "making ALSA connections"
 echo ""
 aconnect seq24:1 BME700:0
-aconnect seq24:3 Neutron:0
+aconnect seq24:12 Neutron:0
 aconnect seq24:5 yoshimi-yg:0
 aconnect seq24:6 roadrunner:0
 
@@ -65,10 +66,13 @@ aconnect seq24:0 sr2020:1
 
 
 #connect to the Volca Keys:
-aconnect seq24:15 'USB2.0-MIDI MIDI 1':0
+aconnect seq24:15 CH345:0
 
 
 #hook up the nanokeys
 aconnect nanoKEY2:0 roadrunner:0
+
+gedit README.md &
+
 
 
