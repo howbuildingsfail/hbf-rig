@@ -6,4 +6,5 @@ better art expresses this
 
 to review is to create
 and turn stuff over in your head 
-and put
+and put those things together
+never connected before

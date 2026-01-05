@@ -21,3 +21,20 @@ the (worn) parts are greater than (purchased/pristine) whole
 
 the things you do to me via  
 Accident and control  
+
+====
+
+Accident and control
+the smallest part contributes to the whole
+
+I opend the drawer and the words came out
+I upended the bin and the words came out
+
+You don't have to invoke 
+any supreme being
+you don't have to smoke that to 
+find a new way of seeing
+
+these
+
+accidents and controls!

@@ -12,23 +12,30 @@ go to bed scared
 witness the dawns
 and the sunsets
 
+#chorus
+and I'm still here
+very differnt now
+better than last time
+better than last time
+
 the world is very different now
 foxes in cites
 dragonflies in yorkshire
 the new north passage
 water on the moon 
-
 giant steps
+
 help that boy boogie woogie
-help that boy
+help that boy boogie woogie
 because it's in him
 because it's in 
 him
 
-loneliness in the workplace
-apes debased
-ther is no place
-for these feelings today
+# chorus
+and I'm still here
+very differnt now
+better than last time
+better than last time
 
 
 default to in-person communication
@@ -36,6 +43,10 @@ encourage mentorship
 bake in social time
 build effective social spaces
 
+loneliness in the workplace
+apes debased
+ther is no place
+for these feelings today
 
 check the depth of the sandpit
 the pool table

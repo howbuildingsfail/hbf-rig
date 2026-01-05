@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microphone Ellipse Animation</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>-->
+    <script src="./p5/p5.js"></script>
+    <script src="./p5/addons/p5.sound.min.js"></script>
+    <script>
+      
+      //lenia params
+      let params = {
+        mu_k:    4.0,//4.0, range 2 to 12
+        sigma_k: 0.125, //was 1.0
+        w_k:     0.022,//0.022,
+        mu_g:    0.6,
+        sigma_g: 0.15,
+        c_rep:   0.125,//1.0,
+        dt:      0.1,
+        scscale: 100 //75 - this is calculated per frame so no matter! 
+      };
+
+      let point_n = 450;//90;
+      let points;
+      let fields;
+      let steps_per_frame; // Adjust this based on desired speed
+      let randomCol;
+
+      //mic params
+      let use_mic = false;
+      let mic;
+      let fft;
+      let particles = [];
+      let amp = 125;
+
+      function setup() {
+      
+        //lenia section
+        //createCanvas(1200, 800);
+        createCanvas(windowWidth, windowHeight);
+        //createCanvas(400, 400);
+        points = init(new Float32Array(point_n * 2));
+        fields = {
+          R_val: new Float32Array(point_n),
+          U_val: new Float32Array(point_n),
+          R_grad: new Float32Array(point_n * 2),
+          U_grad: new Float32Array(point_n * 2)
+        };
+
+        colorMode(RGB, 200, 200, 200, 200);
+        noStroke();
+
+        steps_per_frame = 30;//int(random(1, 10));
+
+        randomCol = random();
+        console.log(randomCol);
+        
+        ////////////////////////////////////////////////
+        //sliders
+        slider_mu = createSlider(1,12,params.mu_k);
+        slider_mu.position(10,10);
+        slider_mu.size(190);
+        
+        
+        slider_sigma_k = createSlider(0.125/2,4,params.sigma_k,0.125/2); //was 1.0
+        slider_sigma_k.position(10,30);
+        slider_sigma_k.size(190);
+        
+        
+        slider_w_k = createSlider(0.001,0.051,params.w_k,0.005); //was 1.0
+        slider_w_k.position(10,50);
+        slider_w_k.size(190);
+        
+        slider_mu_g = createSlider(0,2,params.mu_g,0.1);
+        slider_mu_g.position(10,70);
+        slider_mu_g.size(190);
+        
+        slider_sigma_g = createSlider(0,2,params.sigma_g,0.1);
+        slider_sigma_g.position(10,90);
+        slider_sigma_g.size(190);
+        
+        slider_c_rep = createSlider(0,2,params.c_rep,0.1);
+        slider_c_rep.position(10,110);
+        slider_c_rep.size(190);
+        
+        slider_dt = createSlider(0,1,params.dt,0.1);
+        slider_dt.position(10,130);
+        slider_dt.size(190);
+        
+      
+        ////////////////////////////////////////////////
+        //mic section
+        mic = new p5.AudioIn();
+        mic.start();
+      
+        //getAudioContext().resume();
+      
+        fft = new p5.FFT(0.8, 128);//64
+        fft.setInput(mic);
+
+        //for (let i = 0; i < 100; i++) {
+        //  particles.push(new Particle());
+        //}
+      }
+
+      //Click in window to connect audio
+      function touchStarted() {
+        getAudioContext().resume();
+      }
+
+      function draw() {
+        background(0);
+
+
+        if(use_mic){
+          let spectrum = fft.analyze();
+          let amp = fft.getEnergy("bass");
+
+        //console.log("bass amp: ",amp)  
+        
+          params.sigma_k = 0.125 + (fft.getEnergy("mid")/200);
+          params.c_rep =  1 - (fft.getEnergy("highMid")/300);
+          params.scscale = 30 + (255-fft.getEnergy("lowMid"))/3;
+        }
+        else{
+          //params.sigma_k = 0.125;
+          //params.c_rep = 1;
+          params.mu_k = slider_mu.value();
+          params.sigma_k = slider_sigma_k.value();
+          params.w_k = slider_w_k.value();
+          params.mu_g = slider_mu_g.value();
+          params.sigma_g = slider_sigma_g.value();
+          params.c_rep= slider_c_rep.value();
+          params.dt = slider_dt.value();
+        }
+  
+        //for (let particle of particles) {
+        //  particle.update(amp*2);
+        //  particle.show();
+        //}
+          
+        for (let i = 0; i < steps_per_frame; ++i) step();
+        background(0, 40);
+        
+        halfw = width/2;
+        halfh = height/2;
+        
+        translate(halfw, halfh);
+        
+        currentscale = width / params.scscale;
+        xlim = 0.5 * width/currentscale;
+        ylim = 0.5 * height/currentscale;
+        
+        console.log(currentscale);
+        
+        scale(currentscale);//50.0);
+        strokeWeight(0.1);
+
+        for (let i = 0; i < point_n; ++i) {
+        
+          ii = i * 2;
+          jj = i * 2 + 1;
+          //return points outside boundary to zero...
+          points[ii] = points[ii] >=  xlim  ? -xlim+0.01  : points[ii];
+          points[ii] = points[ii] <= -xlim  ? -xlim+0.01  : points[ii]+0.05;//random(0.1,0.15);
+          //
+          points[jj] = points[jj] >=  ylim  ? 0  : points[jj];
+          points[jj] = points[jj] <= -ylim  ? 0  : points[jj];
+        
+        
+          let x = points[i * 2], y = points[i * 2 + 1];
+          
+          //Handle screen wrapping
+          //x = x > halfw  ? x-width  : (x< -halfw ? x+width  : x );
+          //y = y > halfh  ? y-height : (y< -halfh ? y+height : y );
+          
+          //debugging
+          
+                
+          
+          
+          let r = params.c_rep / (fields.R_val[i] * 5.0);
+          
+          if(randomCol < 0.3){
+            fill((i)/point_n* 200, 70, 100, 162);
+          } else if(0.3 <= randomCol && randomCol < 0.6) {
+            fill(90, 80, (i)/point_n* 200, 162);
+          } else {
+            fill(20, (i)/point_n* 200, 180, 162);
+          }
+          
+          ellipse(x, y, r * 2*amp/70, r * 2*amp/70);
+          //quad(x,y,
+          //     x+(r*2*Math.random()),y,
+          //     x+(r*2*Math.random()),y+(r*2*Math.random()),
+          //     x,y+(r*2*Math.random())
+          //    )
+          
+                    
+          
+        }
+          
+        //debugging boundaries  
+        //square(-10/currentscale, -10/currentscale, 20/currentscale);
+        //square(0.45*width/currentscale,0.45*height/currentscale,20/currentscale);
+        //square(0.45*width/currentscale,0.45*height/currentscale,20/currentscale);
+        
+        //TODO: figure out coords properly!
+        fill(255);
+        textSize(0.9);
+        text(`mu_k = ${params.mu_k}`, -39, -26.7);
+        text(`sigma_k = ${params.sigma_k}`, -39, -25.7);
+        text(`w_k = ${params.w_k}`, -39, -24.7);
+        text(`mu_g = ${params.mu_g}`, -39, -23.7);
+        text(`sigma_g = ${params.sigma_g}`, -39, -22.7);
+        text(`c_rep = ${params.c_rep}`, -39, -21.7);
+        text(`dt = ${params.dt}`, -39, -20.7);
+        //fill('yellow');
+        //text('rainbows', 6, 20);
+        
+      }
+
+      function init(points) {
+        for (let i = 0; i < point_n; ++i) {
+          points[i * 2] = (Math.random() - 0.5) * 18;//12;
+          points[i * 2 + 1] = (Math.random() - 0.5) * 12;//12;
+        }
+        return points;
+      }
+
+      function add_xy(a, i, x, y, c) {
+        a[i * 2] += x * c;
+        a[i * 2 + 1] += y * c;
+      }
+
+      function compute_fields() {
+        const { R_val, U_val, R_grad, U_grad } = fields;
+        const { c_rep, mu_k, sigma_k, w_k } = params;
+        R_val.fill(repulsion_f(0.0, c_rep)[0]);
+        U_val.fill(peak_f(0.0, mu_k, sigma_k, w_k)[0]);
+        R_grad.fill(0);
+        U_grad.fill(0);
+
+        for (let i = 0; i < point_n - 1; ++i) {
+          for (let j = i + 1; j < point_n; ++j) {
+            let rx = points[i * 2] - points[j * 2];
+            let ry = points[i * 2 + 1] - points[j * 2 + 1];
+            const r = Math.sqrt(rx * rx + ry * ry) + 1e-20;
+            rx /= r;
+            ry /= r;
+
+            if (r < 1.0) {
+              const [R, dR] = repulsion_f(r, c_rep);
+              add_xy(R_grad, i, rx, ry, dR);
+              add_xy(R_grad, j, rx, ry, -dR);
+              R_val[i] += R;
+              R_val[j] += R;
+            }
+            const [K, dK] = peak_f(r, mu_k, sigma_k, w_k);
+            add_xy(U_grad, i, rx, ry, dK);
+            add_xy(U_grad, j, rx, ry, -dK);
+            U_val[i] += K;
+            U_val[j] += K;
+          }
+        }
+      }
+
+      function repulsion_f(x, c_rep) {
+        const t = Math.max(1.0 - x, 0.0);
+        return [0.5 * c_rep * t * t, -c_rep * t];
+      }
+
+      function fast_exp(x) {
+        let t = 1.0 + x / 32.0;
+        t *= t;
+        t *= t;
+        t *= t;
+        t *= t;
+        t *= t;
+        return t;
+      }
+
+      function peak_f(x, mu, sigma, w = 1.0) {
+        const t = (x - mu) / sigma;
+        const y = w / fast_exp(t * t);
+        return [y, -2.0 * t * y / sigma];
+      }
+
+      function step() {
+        const { R_val, U_val, R_grad, U_grad } = fields;
+        const { mu_g, sigma_g, dt } = params;
+        compute_fields();
+        let total_E = 0.0;
+        for (let i = 0; i < point_n; ++i) {
+          const [G, dG] = peak_f(U_val[i], mu_g, sigma_g);
+          const vx = dG * U_grad[i * 2] - R_grad[i * 2];
+          const vy = dG * U_grad[i * 2 + 1] - R_grad[i * 2 + 1];
+          add_xy(points, i, vx, vy, dt);
+          total_E += R_val[i] - G;
+        }
+        return total_E / point_n;
+      }
+    </script>
+  </body>
+</html>

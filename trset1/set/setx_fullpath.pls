@@ -1,0 +1,9 @@
+/home/sjh518/git/hbf-rig/trset1/set/MeaningfulWork.midi
+/home/sjh518/git/hbf-rig/trset1/set/DeadFamous.midi
+/home/sjh518/git/hbf-rig/trset1/set/03_GobCan.midi
+/home/sjh518/git/hbf-rig/trset1/set/06_fizzbang.midi
+/home/sjh518/git/hbf-rig/trset1/set/sometimesAGreatNotion.midi
+/home/sjh518/git/hbf-rig/trset1/set/midlifecrisis.midi
+/home/sjh518/git/hbf-rig/trset1/set/12_iabymjob.midi
+/home/sjh518/git/hbf-rig/trset1/set/ClimateDenial.midi
+/home/sjh518/git/hbf-rig/trset1/set/03_crapband.midi

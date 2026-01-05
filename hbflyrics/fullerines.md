@@ -6,19 +6,15 @@ Skip Ad in 5
 micropenny royalties
 you are the product if you got it for free
 
-
 Emptiness in time
 Skip Ad in 5
 The atoms moved unexpectedly
 and the enemy arrives by limousine
 
-
-
 Emptiness in time
 Skip Ad in 5
 The Captain felt like a glass shrimp
 The Captain feels like a glass shrimp
-
 
 Emptiness in time
 Skip Ad in 5
@@ -37,7 +33,7 @@ I've forgotten what I came here for
 I walked to the shops with my headphones on
 I went round the shops
 Came back from the shops
-went round the copice
+went round the coppice
 
 
 we are waiting for the crops to grow

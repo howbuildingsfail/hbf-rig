@@ -1,148 +1,82 @@
-<!DOCTYPE html> <html lang="en">     
-<head>         
-<meta charset="utf-8">         
-<title>H. B. F.</title>   
-<style>
-@keyframes example {
-    0% {background-color: #000;}
-    23% {background-color: #222;}
-    25%{background-color: red;}
-    27% {background-color: #222;}
-    50% {background-color: #444;}
-    100% {background-color: #000;}
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microphone Ellipse Animation</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <script>
+      let mic;
+      let fft;
+      let particles = [];
 
-@keyframes fg {
-    0% {color: #666;}
-    50% {color: #000;}
-    73% {color: #333;}
-    75%{color: red;}
-    77% {color: #333;}
-    100% {color: #666;}
-}
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        noStroke();
+        mic = new p5.AudioIn();
+        mic.start();
+        fft = new p5.FFT(0.8, 64);
+        fft.setInput(mic);
 
-
-html *
-{
-   font-family: Arial !important;
-}
-body {
-  padding:50px;
-  font:12px Menlo;
-  color:#FAFAFA;
-  background-color: #000000;
-  font-weight:200;
-  text-align: left;
-  overflow: hidden;
-  animation-name: example;
-  animation-duration: 201s;
-  animation-iteration-count: infinite;
-}
-
-h1 {
-  font-size:200px;
-  font-style: bold;
-  animation-name: fg;
-  animation-duration: 131s;
-  animation-iteration-count: infinite;
-}
-</style>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-
-
-//Get rand value between max and min
-
-function randmm(max, min){
-	return min + (Math.random()*(max - min));
-}
-
-
-
-$(document).ready(function(){
-    setInterval('cycleMe()', 40);
-});
-
-
-
-
-function cycleMe(){
-
-
-	divstring = '<div style="position:absolute;width:25px;height:25px;opacity:0.3;z-index:100;background:#F00;left:'
-				+randmm($(window).width(),0)+
-				'px;top:'+randmm($(window).height(),0)+'px;"></div>'
-
-
-  //Add the div to the body
-  $("body").append(divstring).animate({left: '250px'});;
-
-
-}
-
-
-
-
-// Fade function adapted from
-// https://stackoverflow.com/questions/6121203/how-to-do-fade-in-and-fade-out-with-javascript-and-css
-
-function unfade(element) {
-    var op = 0.1;  // initial opacity
-    element.style.display = 'block';
-    var timer = setInterval(function () {
-        if (op >= 1){
-            clearInterval(timer);
+        for (let i = 0; i < 100; i++) {
+          particles.push(new Particle());
         }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op += op * 0.1;
-    }, 10);
-}
+      }
 
-/* Create some random squares */
-function randSquares(){
+      function draw() {
+        background(0);
 
-	count =0;
-	lim = 10;
+        let spectrum = fft.analyze();
+        let amp = fft.getEnergy("bass");
 
-	while(count < lim){
+        for (let particle of particles) {
+          particle.update(amp);
+          particle.show();
+        }
+      }
 
-	}
+      class Particle {
+        constructor() {
+          this.pos = createVector(random(width), random(height));
+          this.vel = createVector(random(-5, 5), random(-5, 5));
+          this.size = random(5, 20);
+          this.color = color(random(255), random(255), random(255), 100);
+        }
 
+        update(amp) {
+          this.pos.add(this.vel);
+          this.edges();
+          this.size = map(amp, 0, 255, 5, 100);
+          this.color = color(map(amp, 0, 255, 0, 255), random(255), random(255), 150);
+        }
 
-}
+        edges() {
+          if (this.pos.x > width || this.pos.x < 0) {
+            this.vel.x *= -1;
+          }
+          if (this.pos.y > height || this.pos.y < 0) {
+            this.vel.y *= -1;
+          }
+        }
 
+        show() {
+          fill(this.color);
+          ellipse(this.pos.x, this.pos.y, this.size);
+        }
+      }
+    </script>
+  </body>
+</html>
 
-//$(document).ready(function(){
-//	var body = document.getElementsByTagName('body');
-//el.innerHTML = '<p><a id="clickme" href="#">Click me</a></p>';
-//document.getElementById('clickme').onclick = function (e) {
-//    e.preventDefault();
-
-//    document.body.innerHTML +='<div style="position:absolute;width:1o%;height:10%;opacity:0.3;z-index:100;background:#F00;"></div>';
-
-
-//    $("button").click(function(){
-//        $("p").slideToggle();
-//    });
-
-//)};
-
-
-
-</script>
-
-
-
-</head>     
-<body>         
-<h1>HowBuildingsFail</h1> 
-
-
-
-
-
-</body> 
-</html> 

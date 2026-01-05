@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microphone Ellipse Animation</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>-->
+    <script src="./p5/p5.js"></script>
+    <script src="./p5/addons/p5.sound.min.js"></script>
+    <script src="delaunay.js"></script>
+    <script>
+      
+      //lenia params
+      let params = {
+        mu_k:    9.0,//4.0,//4.0, range 2 to 12
+        sigma_k: 4,//0.125, //was 1.0
+        w_k:     0.031,//0.022,//0.022,
+        mu_g:    1.6,
+        sigma_g: 0.15,
+        c_rep:   0.125,//1.0,
+        dt:      0.1,
+        scscale: 100 //75 - this is calculated per frame so no matter! 
+      };
+
+      let point_n = 450;//450;//90;
+      let points;
+      let fields;
+      let steps_per_frame; // Adjust this based on desired speed
+      let randomCol;
+      var XMOTION = 0;//0.01;
+
+      //mic params
+      let use_mic = false;
+      let mic;
+      let fft;
+      let particles = [];
+      let amp = 125;
+      
+      //delaunay params
+      let dpoints = [];
+      let triangles = [];
+      let delaunayEdges = [];
+      var DELAUNAY_EPSILON = 1.0 / 1048576.0;
+
+
+      function setup() {
+      
+        //lenia section
+        //createCanvas(1200, 800);
+        createCanvas(windowWidth, windowHeight);
+        
+	//background(255);
+        //createCanvas(400, 400);
+        points = init(new Float32Array(point_n * 2));
+        fields = {
+          R_val: new Float32Array(point_n),
+          U_val: new Float32Array(point_n),
+          R_grad: new Float32Array(point_n * 2),
+          U_grad: new Float32Array(point_n * 2)
+        };
+
+        colorMode(RGB, 200, 200, 200, 200);
+        noStroke();
+
+        steps_per_frame = 30;//int(random(1, 10));
+
+        randomCol = random();
+        console.log(randomCol);
+        
+        ////////////////////////////////////////////////
+        //sliders
+        slider_mu = createSlider(1,32,params.mu_k);
+        slider_mu.position(10,10);
+        slider_mu.size(190);
+        
+        
+        slider_sigma_k = createSlider(0.125/2,12,params.sigma_k,0.125/2); //was 
+        slider_sigma_k.position(10,30);
+        slider_sigma_k.size(190);
+        
+        
+        slider_w_k = createSlider(0.001,0.151,params.w_k,0.005); //was 1.0
+        slider_w_k.position(10,50);
+        slider_w_k.size(190);
+        
+        slider_mu_g = createSlider(0,6,params.mu_g,0.1);
+        slider_mu_g.position(10,70);
+        slider_mu_g.size(190);
+        
+        slider_sigma_g = createSlider(0.1,6,params.sigma_g,0.1);
+        slider_sigma_g.position(10,90);
+        slider_sigma_g.size(190);
+        
+        slider_c_rep = createSlider(0,60,params.c_rep,0.1);
+        slider_c_rep.position(10,110);
+        slider_c_rep.size(190);
+        
+        slider_dt = createSlider(0,3,params.dt,0.1);
+        slider_dt.position(10,130);
+        slider_dt.size(190);
+        
+      
+        ////////////////////////////////////////////////
+        //mic section
+        mic = new p5.AudioIn();
+        mic.start();
+      
+        //getAudioContext().resume();
+      
+        fft = new p5.FFT(0.8, 128);//64
+        fft.setInput(mic);
+        
+        
+  	strokeCap(ROUND);
+
+        //for (let i = 0; i < 100; i++) {
+        //  particles.push(new Particle());
+        //}
+      }
+
+      //Click in window to connect audio
+      function touchStarted() {
+        getAudioContext().resume();
+      }
+
+      function draw() {
+        background(255);
+
+
+        if(use_mic){
+          let spectrum = fft.analyze();
+          let amp = fft.getEnergy("bass");
+
+        //console.log("bass amp: ",amp)  
+        
+          params.sigma_k = 0.125 + (fft.getEnergy("mid")/200);
+          params.c_rep =  1 - (fft.getEnergy("highMid")/300);
+          params.scscale = 30 + (255-fft.getEnergy("lowMid"))/3;
+        }
+        else{
+          //params.sigma_k = 0.125;
+          //params.c_rep = 1;
+          params.mu_k = slider_mu.value();
+          params.sigma_k = slider_sigma_k.value();
+          params.w_k = slider_w_k.value();
+          params.mu_g = slider_mu_g.value();
+          params.sigma_g = slider_sigma_g.value();
+          params.c_rep= slider_c_rep.value();
+          params.dt = slider_dt.value();
+        }
+  
+        //for (let particle of particles) {
+        //  particle.update(amp*2);
+        //  particle.show();
+        //}
+          
+        for (let i = 0; i < steps_per_frame; ++i) step();
+        background(0, 40);
+        
+        halfw = width/2;
+        halfh = height/2;
+        
+        translate(halfw, halfh);
+        
+        currentscale = width / params.scscale;
+        xlim = 0.5 * width/currentscale;
+        ylim = 0.5 * height/currentscale;
+        
+        console.log(currentscale);
+        
+        scale(currentscale);//50.0);
+        strokeWeight(0.1);
+        
+        dpoints = [];
+
+        for (let i = 0; i < point_n; ++i) {
+        
+          ii = i * 2;
+          jj = i * 2 + 1;
+          //return points outside boundary to zero...
+          //points[ii] = points[ii] >=  xlim  ? -xlim+0.01  : points[ii];
+          //points[ii] = points[ii] <= -xlim  ? -xlim+0.01  : points[ii]+XMOTION;//random(0.1,0.15);
+          //
+          //points[jj] = points[jj] >=  ylim  ? 0  : points[jj];
+          //points[jj] = points[jj] <= -ylim  ? 0  : points[jj];
+        
+        
+        
+          let x = points[i * 2], y = points[i * 2 + 1];
+        
+          dpoints.push([x,y]);
+            
+          //Handle screen wrapping
+          //x = x > halfw  ? x-width  : (x< -halfw ? x+width  : x );
+          //y = y > halfh  ? y-height : (y< -halfh ? y+height : y );
+          
+          //debugging
+          
+                
+          
+          
+          let r = params.c_rep / (fields.R_val[i] * 5.0);
+          
+          if(randomCol < 0.3){
+            fill((i)/point_n* 200, 70, 100, 162);
+          } else if(0.3 <= randomCol && randomCol < 0.6) {
+            fill(90, 80, (i)/point_n* 200, 162);
+          } else {
+            fill(20, (i)/point_n* 200, 180, 162);
+          }
+          
+          ellipse(x, y, r * 2*amp/70, r * 2*amp/70);
+          //quad(x,y,
+          //     x+(r*2*Math.random()),y,
+          //     x+(r*2*Math.random()),y+(r*2*Math.random()),
+          //     x,y+(r*2*Math.random())
+          //    )
+          
+                    
+          
+        }
+        
+        //https://editor.p5js.org/allison.parrish/sketches/BkhEmKKjW
+        //triangles = Delaunay.triangulate(dpoints);
+        triangles = delaunayTriangulate(dpoints);
+        
+   	print("ntri = " + triangles.length );
+        
+	  for (let i = 0; i < triangles.length; i += 3) {
+	    beginShape();
+	    noFill();
+  stroke(255, 0, 0);
+  strokeWeight(0.1);
+        
+  	strokeCap(ROUND);
+	    //fill(255-(i / triangles.length)*255, 0, 128);
+	    vertex(dpoints[triangles[i]][0], dpoints[triangles[i]][1]);
+	    vertex(dpoints[triangles[i+1]][0], dpoints[triangles[i+1]][1]);
+	    vertex(dpoints[triangles[i+2]][0], dpoints[triangles[i+2]][1]);
+	    endShape(CLOSE);
+	  }
+	  noStroke();
+          
+        //debugging boundaries  
+        //square(-10/currentscale, -10/currentscale, 20/currentscale);
+        //square(0.45*width/currentscale,0.45*height/currentscale,20/currentscale);
+        //square(0.45*width/currentscale,0.45*height/currentscale,20/currentscale);
+        
+        //TODO: figure out coords properly!
+        fill(255);
+        textSize(0.9);
+        text(`mu_k = ${params.mu_k}`, -39, -26.7);
+        text(`sigma_k = ${params.sigma_k}`, -39, -25.7);
+        text(`w_k = ${params.w_k}`, -39, -24.7);
+        text(`mu_g = ${params.mu_g}`, -39, -23.7);
+        text(`sigma_g = ${params.sigma_g}`, -39, -22.7);
+        text(`c_rep = ${params.c_rep}`, -39, -21.7);
+        text(`dt = ${params.dt}`, -39, -20.7);
+        //fill('yellow');
+        //text('rainbows', 6, 20);
+        
+      }
+      
+//////////////////////------------------------      
+
+      function init(points) {
+      
+      	let xlim = 50;
+      	let ylim = 20;
+      
+      	points[0] = -xlim/2;
+      	points[1] = -ylim/2;
+      	
+      	points[2] = xlim/2;
+      	points[3] = -ylim/2;
+      	
+      	points[4] = xlim/2;
+      	points[5] = ylim/2;
+      	
+      	points[6] = -xlim/2;
+      	points[7] = ylim/2;
+      	
+
+      
+        for (let i = 4; i < point_n; ++i) {
+          points[i * 2] = (Math.random() - 0.5) * xlim;//12;
+          points[i * 2 + 1] = (Math.random() - 0.5) * ylim;//12;
+        }
+        return points;
+      }
+
+      function add_xy(a, i, x, y, c) {
+        a[i * 2] += x * c;
+        a[i * 2 + 1] += y * c;
+      }
+
+      function compute_fields() {
+        const { R_val, U_val, R_grad, U_grad } = fields;
+        const { c_rep, mu_k, sigma_k, w_k } = params;
+        R_val.fill(repulsion_f(0.0, c_rep)[0]);
+        U_val.fill(peak_f(0.0, mu_k, sigma_k, w_k)[0]);
+        R_grad.fill(0);
+        U_grad.fill(0);
+
+        for (let i = 0; i < point_n - 1; ++i) {
+          for (let j = i + 1; j < point_n; ++j) {
+            let rx = points[i * 2] - points[j * 2];
+            let ry = points[i * 2 + 1] - points[j * 2 + 1];
+            const r = Math.sqrt(rx * rx + ry * ry) + 1e-20;
+            rx /= r;
+            ry /= r;
+
+            if (r < 1.0) {
+              const [R, dR] = repulsion_f(r, c_rep);
+              add_xy(R_grad, i, rx, ry, dR);
+              add_xy(R_grad, j, rx, ry, -dR);
+              R_val[i] += R;
+              R_val[j] += R;
+            }
+            const [K, dK] = peak_f(r, mu_k, sigma_k, w_k);
+            add_xy(U_grad, i, rx, ry, dK);
+            add_xy(U_grad, j, rx, ry, -dK);
+            U_val[i] += K;
+            U_val[j] += K;
+          }
+        }
+      }
+
+      function repulsion_f(x, c_rep) {
+        const t = Math.max(1.0 - x, 0.0);
+        return [0.5 * c_rep * t * t, -c_rep * t];
+      }
+
+      function fast_exp(x) {
+        let t = 1.0 + x / 32.0;
+        t *= t;
+        t *= t;
+        t *= t;
+        t *= t;
+        t *= t;
+        return t;
+      }
+
+      function peak_f(x, mu, sigma, w = 1.0) {
+        const t = (x - mu) / sigma;
+        const y = w / fast_exp(t * t);
+        return [y, -2.0 * t * y / sigma];
+      }
+
+      function step() {
+        const { R_val, U_val, R_grad, U_grad } = fields;
+        const { mu_g, sigma_g, dt } = params;
+        compute_fields();
+        let total_E = 0.0;
+        for (let i = 4; i < point_n; ++i) {
+          const [G, dG] = peak_f(U_val[i], mu_g, sigma_g);
+          const vx = dG * U_grad[i * 2] - R_grad[i * 2];
+          const vy = dG * U_grad[i * 2 + 1] - R_grad[i * 2 + 1];
+          add_xy(points, i, vx, vy, dt);
+          total_E += R_val[i] - G;
+        }
+        return total_E / point_n;
+      }
+      
+      
+      
+//https://editor.p5js.org/golan/sketches/kZHQrL5aK
+//---------------------------------------------------
+function delaunayTriangulate (vertices, key) {
+  var n = vertices.length;
+  var i, j;
+  var dx, dy;
+  var a, b, c;
+  var indices, st, open, closed, edges;
+  if (n < 3) return [];
+  vertices = vertices.slice(0);
+
+  if (key) {
+    for (i = n; i--; ) {
+      vertices[i] = vertices[i][key];
+    }
+  }
+  indices = new Array(n);
+  for (i = n; i--; ) {
+    indices[i] = i;
+  }
+  indices.sort(function (i, j) {
+    var diff = vertices[j][0] - vertices[i][0];
+    return diff !== 0 ? diff : i - j;
+  });
+  st = supertriangle(vertices);
+  vertices.push(st[0], st[1], st[2]);
+  open = [circumcircle(vertices, n + 0, n + 1, n + 2)];
+  closed = [];
+  
+  edges = [];
+  for (i = indices.length; i--; edges.length = 0) {
+    c = indices[i];
+    for (j = open.length; j--; ) {
+      dx = vertices[c][0] - open[j].x;
+      if (dx > 0.0 && dx * dx > open[j].r) {
+        closed.push(open[j]);
+        open.splice(j, 1);
+        continue;
+      }
+      dy = vertices[c][1] - open[j].y;
+      if (dx * dx + dy * dy - open[j].r > DELAUNAY_EPSILON) continue;
+
+      edges.push(
+        open[j].i, open[j].j,
+        open[j].j, open[j].k,
+        open[j].k, open[j].i
+      );
+      open.splice(j, 1);
+    }
+
+    dedup(edges);
+    
+    /* Add a new triangle for each edge. */
+    for (j = edges.length; j; ) {
+      b = edges[--j];
+      a = edges[--j];
+      open.push(circumcircle(vertices, a, b, c));
+    }
+  }
+
+  for (i = open.length; i--; ) {
+    closed.push(open[i]);
+  }
+  open.length = 0;
+  for (i = closed.length; i--; ) {
+    if (closed[i].i < n && closed[i].j < n && closed[i].k < n) {
+      open.push(closed[i].i, closed[i].j, closed[i].k);
+    }
+  }
+  
+   //print(" " + open.length + ": " + open);
+  return open;
+}
+
+//---------------------------------------------------
+function dedup(edges) {
+  for (var j = edges.length; j; ) {
+    var b = edges[--j];
+    var a = edges[--j];
+    for (var i = j; i; ) {
+      var n = edges[--i];
+      var m = edges[--i];
+      if ((a === m && b === n) || (a === n && b === m)) {
+        edges.splice(j, 2);
+        edges.splice(i, 2);
+        break;
+      }
+    }
+  }
+}
+
+//---------------------------------------------------
+function circumcircle(vertices, i, j, k) {
+  var x1 = vertices[i][0];
+  var y1 = vertices[i][1];
+  var x2 = vertices[j][0];
+  var y2 = vertices[j][1];
+  var x3 = vertices[k][0];
+  var y3 = vertices[k][1];
+  var fabsy1y2 = Math.abs(y1 - y2);
+  var fabsy2y3 = Math.abs(y2 - y3);
+  var xc, yc, m1, m2;
+  var mx1, mx2, my1, my2;
+  if (fabsy1y2 < DELAUNAY_EPSILON && fabsy2y3 < DELAUNAY_EPSILON) {
+    return; // throw new Error("Eek! Coincident points!");
+  }
+  if (fabsy1y2 < DELAUNAY_EPSILON) {
+    m2 = -((x3 - x2) / (y3 - y2));
+    mx2 = (x2 + x3) / 2.0;
+    my2 = (y2 + y3) / 2.0;
+    xc = (x2 + x1) / 2.0;
+    yc = m2 * (xc - mx2) + my2;
+  } else if (fabsy2y3 < DELAUNAY_EPSILON) {
+    m1 = -((x2 - x1) / (y2 - y1));
+    mx1 = (x1 + x2) / 2.0;
+    my1 = (y1 + y2) / 2.0;
+    xc = (x3 + x2) / 2.0;
+    yc = m1 * (xc - mx1) + my1;
+  } else {
+    m1 = -((x2 - x1) / (y2 - y1));
+    m2 = -((x3 - x2) / (y3 - y2));
+    mx1 = (x1 + x2) / 2.0;
+    mx2 = (x2 + x3) / 2.0;
+    my1 = (y1 + y2) / 2.0;
+    my2 = (y2 + y3) / 2.0;
+    xc = (m1 * mx1 - m2 * mx2 + my2 - my1) / (m1 - m2);
+    yc = fabsy1y2 > fabsy2y3 ? m1 * (xc - mx1) + my1 : m2 * (xc - mx2) + my2;
+  }
+  var dx = x2 - xc;
+  var dy = y2 - yc;
+  return { i: i, j: j, k: k, x: xc, y: yc, r: dx * dx + dy * dy };
+}
+
+//---------------------------------------------------
+function supertriangle(vertices) {
+  var xmin = Number.POSITIVE_INFINITY;
+  var ymin = Number.POSITIVE_INFINITY;
+  var xmax = Number.NEGATIVE_INFINITY;
+  var ymax = Number.NEGATIVE_INFINITY;
+  for (var i = vertices.length; i--; ) {
+    if (vertices[i][0] < xmin) xmin = vertices[i][0];
+    if (vertices[i][0] > xmax) xmax = vertices[i][0];
+    if (vertices[i][1] < ymin) ymin = vertices[i][1];
+    if (vertices[i][1] > ymax) ymax = vertices[i][1];
+  }
+  var dx = xmax - xmin;
+  var dy = ymax - ymin;
+  var dmax = Math.max(dx, dy);
+  var xmid = xmin + dx * 0.5;
+  var ymid = ymin + dy * 0.5;
+  return [
+    [xmid - 20 * dmax, ymid - dmax],
+    [xmid, ymid + 20 * dmax],
+    [xmid + 20 * dmax, ymid - dmax],
+  ];
+}
+      
+      
+    </script>
+  </body>
+</html>

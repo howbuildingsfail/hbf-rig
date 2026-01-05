@@ -13,4 +13,7 @@ a half religous thing throughout my life
 to willingly suspend self criticism
 for a moment or an hour after wine
 
-
+to physically hold these things from then
+like the need to touch a coffin when they die
+the universe will peek at you from there
+and call you back to be among your own
